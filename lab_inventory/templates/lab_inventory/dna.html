@@ -5,14 +5,14 @@
     <table>
       <tr>
         <th>tissue_info</th>
-        <th>date_received</th>
+        <th>extraction_date</th>
         <th>stored_freezer</th>
         <th>stored_box</th>
       </tr>
-      {% for item in tissues %}
+      {% for item in dna %}
       <tr>
         <td>{{ item.tissue_info }}</td>
-        <td>{{ item.date_received }}</td>
+        <td>{{ item.extraction_date }}</td>
         <td>{{ item.stored_freezer }}</td>
         <td>{{ item.stored_box }}</td>
       </tr>

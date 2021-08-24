@@ -2,8 +2,11 @@
 
 {% block content %}
 
-  <a href="#">Display tissue data</a>
+  <p>Click below to find data about...</p>
+
+  <a href="{% url 'lab_inventory:tissues' %}">Stored tissues</a>
+  <a href="{% url 'lab_inventory:dna' %}">DNA samples</a>
+  <a href="{% url 'lab_inventory:supplies' %}">Lab supplies</a>
+  <a href="{% url 'lab_inventory:primers' %}">PCR primers</a>
   
 {% endblock content %}
-
-<!-- {% url 'lab_inventory:tissues' topic.id %} -->

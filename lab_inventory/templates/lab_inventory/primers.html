@@ -4,15 +4,21 @@
 
     <table>
       <tr>
-        <th>tissue_info</th>
+        <th>primer_name</th>
+        <th>primer_seq</th>
+        <th>purchase_order</th>
         <th>date_received</th>
+        <th>date_opened</th>
         <th>stored_freezer</th>
         <th>stored_box</th>
       </tr>
-      {% for item in tissues %}
+      {% for item in primers %}
       <tr>
-        <td>{{ item.tissue_info }}</td>
+        <td>{{ item.primer_name }}</td>
+        <td>{{ item.primer_seq }}</td>
+        <td>{{ item.purchase_order }}</td>
         <td>{{ item.date_received }}</td>
+        <td>{{ item.date_opened }}</td>
         <td>{{ item.stored_freezer }}</td>
         <td>{{ item.stored_box }}</td>
       </tr>

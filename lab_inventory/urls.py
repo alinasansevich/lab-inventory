@@ -19,9 +19,16 @@ app_name = "lab_inventory"
 urlpatterns = [
     # Home page
     path('', views.index, name='index'),
+    # Show all tissues
+    path('tissues/', views.tissues, name='tissues'),
+    # Show all DNA samples
+    path('dna/', views.dna, name='dna'),
+    # Show lab supplies
+    path('supplies/', views.supplies, name='supplies'),
+    # Show PCR primers
+    path('primers/', views.primers, name='primers'),
     ]
-    # # Show all topics
-    # path('topics/', views.topics, name='topics'),
+
     # # Detail page for a single topic
     # path('<int:topic_id>/', views.topic, name='topic'),
     # # Page for adding a new topic

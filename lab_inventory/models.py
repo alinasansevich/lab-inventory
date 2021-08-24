@@ -14,16 +14,16 @@ class Tissue(models.Model):
     
     storage_choices = [
     ('Freezer -20', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-20/1', "Shelf 1"),
+        ('-20/2', "Shelf 2"),
+        ('-20/3', "Shelf 3"),
+        ('-20/4', "Shelf 4"),
         )),
     ('Freezer -80', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-80/1', "Shelf 1"),
+        ('-80/2', "Shelf 2"),
+        ('-80/3', "Shelf 3"),
+        ('-80/4', "Shelf 4"),
         )),
     ]    
     tissue_info = models.CharField(max_length=200)
@@ -44,16 +44,16 @@ class DNA(models.Model):
     
     storage_choices = [
     ('Freezer -20', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-20/1', "Shelf 1"),
+        ('-20/2', "Shelf 2"),
+        ('-20/3', "Shelf 3"),
+        ('-20/4', "Shelf 4"),
         )),
     ('Freezer -80', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-80/1', "Shelf 1"),
+        ('-80/2', "Shelf 2"),
+        ('-80/3', "Shelf 3"),
+        ('-80/4', "Shelf 4"),
         )),
     ]    
     tissue_info = models.ForeignKey(Tissue, on_delete=models.PROTECT)
@@ -66,7 +66,7 @@ class DNA(models.Model):
 
     def __str__(self):
         """Return a string representation of the model."""
-        return self.tissue_info
+        return str(self.tissue_info)
 
 
 class Supply(models.Model):
@@ -76,16 +76,16 @@ class Supply(models.Model):
     
     storage_choices = [
     ('Freezer -20', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-20/1', "Shelf 1"),
+        ('-20/2', "Shelf 2"),
+        ('-20/3', "Shelf 3"),
+        ('-20/4', "Shelf 4"),
         )),
     ('Freezer -80', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-80/1', "Shelf 1"),
+        ('-80/2', "Shelf 2"),
+        ('-80/3', "Shelf 3"),
+        ('-80/4', "Shelf 4"),
         )),
     ]
     product_name = models.CharField(max_length=100)
@@ -110,16 +110,16 @@ class Primer(models.Model):
     
     storage_choices = [
     ('Freezer -20', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-20/1', "Shelf 1"),
+        ('-20/2', "Shelf 2"),
+        ('-20/3', "Shelf 3"),
+        ('-20/4', "Shelf 4"),
         )),
     ('Freezer -80', (
-        ('1', "Shelf 1"),
-        ('2', "Shelf 2"),
-        ('3', "Shelf 3"),
-        ('4', "Shelf 4"),
+        ('-80/1', "Shelf 1"),
+        ('-80/2', "Shelf 2"),
+        ('-80/3', "Shelf 3"),
+        ('-80/4', "Shelf 4"),
         )),
     ]
     primer_name = models.CharField(max_length=30)
