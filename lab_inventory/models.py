@@ -64,6 +64,10 @@ class DNA(models.Model):
     class Meta:
         verbose_name_plural = 'DNA'
 
+    def __str__(self):
+        """Return a string representation of the model."""
+        return self.tissue_info
+
 
 class Supply(models.Model):
     """Information about lab supplies
@@ -125,4 +129,8 @@ class Primer(models.Model):
     date_opened = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
     stored_box = models.CharField(max_length=9)
+    
+    def __str__(self):
+        """Return a string representation of the model."""
+        return self.primer_name
 
