@@ -1,0 +1,34 @@
+/*
+Color Palette:
+
+#F8F8FF - GhostWhite
+#2F4F4F - DarkSlateGray
+#D3D3D3 - LightGray
+#A9A9A9 - DarkGray
+#778899 - LightSlateGray
+
+
+*/
+p {
+  color: #2F4F4F;
+  font-size: 20px;
+}
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.container a {
+  color: #F8F8FF;
+  background: #2F4F4F;
+  /*width: 90px;*/
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+}
+.container a:hover {
+  background: rgba(47, 79, 79, 60%);
+}

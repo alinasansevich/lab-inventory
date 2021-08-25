@@ -11,14 +11,21 @@
         <title>Lab Inventory</title>
     {% endif %}
     
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/base-styles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.png' %}"/>
+    
 </head>
 <body>
 
-    <h1 class="header">Lab Inventory</h1>
-    <h4>
-        <a href="{% url 'lab_inventory:index' %}">Home</a> - 
-        
-    </h4>
+    <h1 class="headline">Lab Inventory</h1>
+    <div class="subheader-links">
+        <a href="{% url 'lab_inventory:index' %}">Home</a>
+        <a href="{% url 'lab_inventory:tissues' %}">Tissue Samples</a>
+        <a href="{% url 'lab_inventory:dna' %}">DNA</a>
+        <a href="{% url 'lab_inventory:supplies' %}">Lab Supplies</a>
+        <a href="{% url 'lab_inventory:primers' %}">Primers</a>        
+    </div>
     
     {% block content %}{% endblock content %}
 </body>

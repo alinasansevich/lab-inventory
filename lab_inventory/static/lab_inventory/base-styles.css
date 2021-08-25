@@ -1,0 +1,43 @@
+/*
+Color Palette:
+
+#F8F8FF - GhostWhite
+#2F4F4F - DarkSlateGray
+#D3D3D3 - LightGray
+#A9A9A9 - DarkGray
+#778899 - LightSlateGray
+
+
+Resources - favicon:
+https://stackoverflow.com/questions/21938028/how-can-i-get-a-favicon-to-show-up-in-my-django-app
+
+*/
+html {
+  background-color: #D3D3D3;
+}
+
+.headline {
+  color: #F8F8FF;
+  background-color: #2F4F4F;
+  padding: 30px;
+  margin: -10px;
+  font-size: 40px;
+}
+.subheader-links {
+  color: #F8F8FF;
+  background: #778899;
+  padding: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.subheader-links a {
+  color: #F8F8FF;
+  background: #2F4F4F;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.subheader-links a:hover {
+  background: rgba(47, 79, 79, 60%);
+}

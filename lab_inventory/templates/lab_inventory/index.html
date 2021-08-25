@@ -2,11 +2,17 @@
 
 {% block content %}
 
-  <p>Click below to find data about...</p>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/index-styles.css' %}">
 
-  <a href="{% url 'lab_inventory:tissues' %}">Stored tissues</a>
-  <a href="{% url 'lab_inventory:dna' %}">DNA samples</a>
-  <a href="{% url 'lab_inventory:supplies' %}">Lab supplies</a>
-  <a href="{% url 'lab_inventory:primers' %}">PCR primers</a>
+  <div class="container">
+    <p>Click below to find data about...</p>
+    
+    <a href="{% url 'lab_inventory:tissues' %}">Stored tissues</a>
+    <a href="{% url 'lab_inventory:dna' %}">DNA samples</a>
+    <a href="{% url 'lab_inventory:supplies' %}">Lab supplies</a>
+    <a href="{% url 'lab_inventory:primers' %}">PCR primers</a>
+    
+  </div>
   
 {% endblock content %}
