@@ -4,9 +4,10 @@
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/index-styles.css' %}">
-
-  <div class="container">
-    <p>Click below to find data about...</p>
+  
+  <p>Click below to find data about...</p>
+  
+  <div class="container">  
     
     <a href="{% url 'lab_inventory:tissues' %}">Stored tissues</a>
     <a href="{% url 'lab_inventory:dna' %}">DNA samples</a>

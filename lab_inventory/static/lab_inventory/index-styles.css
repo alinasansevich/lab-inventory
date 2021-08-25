@@ -12,16 +12,19 @@ Color Palette:
 p {
   color: #2F4F4F;
   font-size: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 .container {
-  margin: auto;
+  padding: 5px 370px;
   text-align: center;
 }
 
 .container a {
   color: #F8F8FF;
   background: #2F4F4F;
-  /*width: 90px;*/
+  width: 500px;
   padding: 5px;
   margin: 5px;
   border-radius: 4px;
