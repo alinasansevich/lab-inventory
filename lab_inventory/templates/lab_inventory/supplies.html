@@ -3,16 +3,17 @@
 {% block content %}
 
     <table>
+    <col span="1" class="wide">
       <tr>
-        <th>product_name</th>
-        <th>purchase_order</th>
-        <th>date_received</th>
-        <th>date_opened</th>
-        <th>stored_freezer</th>
+        <th>Product Name</th>
+        <th>Purchase Order</th>
+        <th>Date Received</th>
+        <th>Date Opened</th>
+        <th>Freezer / Shelf</th>
       </tr>
       {% for item in supplies %}
       <tr>
-        <td>{{ item.product_name }}</td>
+        <td width="100%">{{ item.product_name }}</td>
         <td>{{ item.purchase_order }}</td>
         <td>{{ item.date_received }}</td>
         <td>{{ item.date_opened }}</td>
