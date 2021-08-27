@@ -17,16 +17,25 @@
     
 </head>
 <body>
-
+  <div class="content-wrap">
     <h1 class="headline">Lab Inventory</h1>
     <div class="subheader-links">
-        <a href="{% url 'lab_inventory:index' %}">Home</a>
-        <a href="{% url 'lab_inventory:tissues' %}">Tissue Samples</a>
-        <a href="{% url 'lab_inventory:dna' %}">DNA</a>
-        <a href="{% url 'lab_inventory:supplies' %}">Lab Supplies</a>
-        <a href="{% url 'lab_inventory:primers' %}">Primers</a>        
+      <a href="{% url 'lab_inventory:index' %}">Home</a>
+      <a href="{% url 'lab_inventory:tissues' %}">Tissue Samples</a>
+      <a href="{% url 'lab_inventory:dna' %}">DNA</a>
+      <a href="{% url 'lab_inventory:supplies' %}">Lab Supplies</a>
+      <a href="{% url 'lab_inventory:primers' %}">Primers</a>
     </div>
     
-    {% block content %}{% endblock content %}
+  {% block content %}{% endblock content %}
+  
+    <div class="push"></div>
+  </div>
+
+  <footer class="footer">
+    <h5>Add something like: 2021 - Alina Sansevich - link-to-my-GitHub</h5>
+  </footer>
+
+    
 </body>
 </html> 

@@ -8,13 +8,38 @@ Color Palette:
 #778899 - LightSlateGray
 
 
-Resources - favicon:
+Resources:
+
+ - favicon:
 https://stackoverflow.com/questions/21938028/how-can-i-get-a-favicon-to-show-up-in-my-django-app
 
+ - footer layout:
+https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/
+https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b
+https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page
+
 */
-html {
-  background-color: #D3D3D3;
+* {
+    margin: 0;
 }
+html, body {
+    height: 100%;
+    background-color: #D3D3D3;    
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -200px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 200px; /* .push must be the same height as .footer */
+}
+.footer {
+  color: #F8F8FF;
+  background-color: #2F4F4F;
+  padding: 10px;
+  }
 
 .headline {
   color: #F8F8FF;

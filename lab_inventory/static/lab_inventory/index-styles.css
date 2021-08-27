@@ -9,13 +9,7 @@ Color Palette:
 
 
 */
-p {
-  color: #2F4F4F;
-  font-size: 20px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
+
 .container {
   padding: 5px 370px;
   text-align: center;
@@ -34,4 +28,12 @@ p {
 }
 .container a:hover {
   background: rgba(47, 79, 79, 60%);
+}
+
+#index-text {
+  color: #2F4F4F;
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
