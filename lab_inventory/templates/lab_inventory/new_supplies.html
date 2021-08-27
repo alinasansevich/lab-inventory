@@ -1,0 +1,16 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+  <h3>Add new lab supplies:</h3>
+  <p>Add new lab supplies below.<br>
+     Enter data in the following format:
+     "Qwerty"   |   "2021-01-01"
+      </p>
+    <form action="{% url 'lab_inventory:new_supplies' %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+      <button name="submit">Add New Supplies</button>
+    </form>
+        
+{% endblock content %}

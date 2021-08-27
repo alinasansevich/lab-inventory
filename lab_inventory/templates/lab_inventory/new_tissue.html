@@ -1,0 +1,16 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+  <h3>Add a new tissue sample:</h3>
+  <p>Add a new tissue sample below.<br>
+     Enter data in the following format:
+     "Organism / Tissue"   |   "2021-01-01"
+      </p>
+    <form action="{% url 'lab_inventory:new_tissue' %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+      <button name="submit">Add New Tissue</button>
+    </form>
+        
+{% endblock content %}

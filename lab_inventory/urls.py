@@ -27,4 +27,23 @@ urlpatterns = [
     path('supplies/', views.supplies, name='supplies'),
     # Show PCR primers
     path('primers/', views.primers, name='primers'),
+    # Page for adding a new tissue sample
+    path('new_tissue/', views.new_tissue, name='new_tissue'),
+    # Page for adding a new DNA sample
+    path('new_dna/', views.new_dna, name='new_dna'),
+    # Page for adding new lab supplies
+    path('new_supplies/', views.new_supplies, name='new_supplies'), 
+    # Page for adding a new PCR primer
+    path('new_primer/', views.new_primer, name='new_primer'), 
     ]
+
+
+
+
+
+
+
+
+
+
+
