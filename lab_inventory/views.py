@@ -3,13 +3,15 @@ Resources:
     https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-database/7288237
 """
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import DNA, Primer, Supply, Tissue
 from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm
 
+
+### ### ### base views ### ### ###
 
 def index(request):
     """The home page for lab_inventory."""
@@ -43,6 +45,8 @@ def primers(request):
     context = {'primers': primers}
     return render(request, 'lab_inventory/primers.html', context)
 
+
+### ### ### add_new views ### ### ###
 
 def new_tissue(request):
     """Add data about new tissue samples."""
@@ -104,14 +108,88 @@ def new_primer(request):
     return render(request, 'lab_inventory/new_primer.html', context)
 
 
+### ### ### edit views ### ### ###
+
+def edit_tissue(request, entry_id):
+    """Edit an existing entry."""
+    
+    entry = Tissue.objects.get(id=entry_id)
+    
+    if request.method != 'POST':
+        # Initial request; pre-fillform with the current entry.
+        form = TissueForm(instance=entry)
+    else:
+        # POST data submitted; process data.
+        form = TissueForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab_inventory:tissues')
+    
+    context = {'entry': entry,
+                'form': form}
+    return render(request, 'lab_inventory/edit_tissue.html', context)
 
 
+def edit_dna(request, entry_id):
+    """Edit an existing DNA entry."""
+    
+    entry = DNA.objects.get(id=entry_id)
+    
+    if request.method != 'POST':
+        # Initial request; pre-fillform with the current entry.
+        form = DNAForm(instance=entry)
+    else:
+        # POST data submitted; process data.
+        form = DNAForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab_inventory:dna')
+    
+    context = {'entry': entry,
+                'form': form}
+    return render(request, 'lab_inventory/edit_dna.html', context)
 
 
+def edit_supplies(request, entry_id):
+    """Edit an existing DNA entry."""
+    
+    entry = Supply.objects.get(id=entry_id)
+    
+    if request.method != 'POST':
+        # Initial request; pre-fillform with the current entry.
+        form = SupplyForm(instance=entry)
+    else:
+        # POST data submitted; process data.
+        form = SupplyForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab_inventory:supplies')
+    
+    context = {'entry': entry,
+                'form': form}
+    return render(request, 'lab_inventory/edit_supplies.html', context)
 
 
+def edit_primer(request, entry_id):
+    """Edit an existing PCR primer entry."""
+    
+    entry = Primer.objects.get(id=entry_id)
+    
+    if request.method != 'POST':
+        # Initial request; pre-fillform with the current entry.
+        form = PrimerForm(instance=entry)
+    else:
+        # POST data submitted; process data.
+        form = PrimerForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab_inventory:primers')
+    
+    context = {'entry': entry,
+                'form': form}
+    return render(request, 'lab_inventory/edit_primer.html', context)
 
-
+# https://stackoverflow.com/questions/38390177/what-is-a-noreversematch-error-and-how-do-i-fix-it
 
 
 

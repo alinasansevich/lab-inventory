@@ -1,0 +1,15 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+  <h3>Edit supplies entry:</h3>
+
+    <form action="{% url 'lab_inventory:edit_supplies' entry.id %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+      <button name="submit">Save Changes</button>
+      
+      <a href="{% url 'lab_inventory:supplies' %}">Go back</a>
+    </form>
+        
+{% endblock content %}

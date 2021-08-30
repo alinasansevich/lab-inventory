@@ -2,12 +2,15 @@
 
 {% block content %}
 
+    <h2>Tissue Samples</h2>
+
     <table>
       <tr>
         <th>Organism / Tissue</th>
         <th>Date Received</th>
         <th>Freezer / Shelf</th>
         <th>Box / Position</th>
+        <th>Edit</th>
       </tr>
       {% for item in tissues %}
       <tr>
@@ -15,6 +18,7 @@
         <td>{{ item.date_received }}</td>
         <td>{{ item.stored_freezer }}</td>
         <td>{{ item.stored_box }}</td>
+        <td><a href="{% url 'lab_inventory:edit_tissue' item.id %}">Edit</a></td>
       </tr>
       {% endfor %}
     </table>

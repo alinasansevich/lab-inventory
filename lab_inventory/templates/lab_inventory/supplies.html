@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <h2>Lab Supplies</h2>
+
     <table>
     <col span="1" class="wide">
       <tr>
@@ -10,6 +12,7 @@
         <th>Date Received</th>
         <th>Date Opened</th>
         <th>Freezer / Shelf</th>
+        <th>Edit</th>
       </tr>
       {% for item in supplies %}
       <tr>
@@ -18,6 +21,7 @@
         <td>{{ item.date_received }}</td>
         <td>{{ item.date_opened }}</td>
         <td>{{ item.stored_freezer }}</td>
+        <td><a href="{% url 'lab_inventory:edit_supplies' item.id %}">Edit</a></td>
       </tr>
       {% endfor %}
     </table>
