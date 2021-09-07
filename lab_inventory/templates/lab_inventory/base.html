@@ -29,6 +29,11 @@
       <a href="{% url 'lab_inventory:dna' %}">DNA</a>
       <a href="{% url 'lab_inventory:supplies' %}">Lab Supplies</a>
       <a href="{% url 'lab_inventory:primers' %}">Primers</a>
+      {% if user.is_authenticated %}
+        Hello, {{ user.username }}
+      {% else %}
+        <a href="{% url 'users:login' %}">Log in</a>
+      {% endif %}
     </div>
     
   {% block content %}{% endblock content %}
