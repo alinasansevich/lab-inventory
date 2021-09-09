@@ -19,6 +19,8 @@ app_name = "lab_inventory"
 urlpatterns = [
     # Home page
     path('', views.index, name='index'),
+    # About page
+    path('about/', views.about, name='about'),
     # Show all tissues
     path('tissues/', views.tissues, name='tissues'),
     # Show all DNA samples

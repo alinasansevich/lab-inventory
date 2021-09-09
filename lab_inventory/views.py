@@ -18,6 +18,11 @@ def index(request):
     return render(request, 'lab_inventory/index.html')
 
 
+def about(request):
+    """The about page for lab_inventory."""
+    return render(request, 'lab_inventory/about.html')
+
+
 def tissues(request):
     """Show all tissues' data."""
     tissues = Tissue.objects.all() # get data from db

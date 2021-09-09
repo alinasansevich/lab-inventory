@@ -1,0 +1,49 @@
+/*
+Color Palette:
+
+#F8F8FF - GhostWhite
+#2F4F4F - DarkSlateGray
+#D3D3D3 - LightGray
+#A9A9A9 - DarkGray
+#778899 - LightSlateGray
+
+*/
+p {
+  margin-bottom: 15px;
+}
+.container {
+  padding: 5px 370px;
+}
+.title {
+  color: #2F4F4F;
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.text {
+  padding: 5px;
+  text-align: justify;
+  line-height: 1.2;
+}
+#readme {
+  color: #2F4F4F;
+  font-weight: bold;
+  text-decoration: none;
+}
+/*     I may use this later for the link to the READme
+.container a {
+  color: #F8F8FF;
+  background: #2F4F4F;
+  width: 500px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+}
+.container a:hover {
+  background: rgba(47, 79, 79, 60%);
+}
+*/

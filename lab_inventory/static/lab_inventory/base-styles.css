@@ -64,10 +64,29 @@ td {
 }
 .footer {
   color: #F8F8FF;
+  font-size: 12px;
   background-color: #2F4F4F;
   padding: 10px;
   }
 
+.footer .github-mark {
+  float: left;
+}
+
+.footer .author {
+  float: left;
+  margin: 10px;
+}
+.footer .about a {
+  float: right;
+  margin: 10px;
+  color: #F8F8FF;
+  background: #2F4F4F;
+  text-decoration: none;  
+}
+.footer .about a {
+  background: rgba(47, 79, 79, 60%);
+}
 .headline {
   color: #F8F8FF;
   background-color: #2F4F4F;
@@ -92,4 +111,8 @@ td {
 }
 .subheader-links a:hover {
   background: rgba(47, 79, 79, 60%);
+}
+.login {
+  float: right;
+  margin-right: 5px;
 }

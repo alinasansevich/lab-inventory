@@ -29,11 +29,13 @@
       <a href="{% url 'lab_inventory:dna' %}">DNA</a>
       <a href="{% url 'lab_inventory:supplies' %}">Lab Supplies</a>
       <a href="{% url 'lab_inventory:primers' %}">Primers</a>
+      <span class="login">
       {% if user.is_authenticated %}
-        Hello, {{ user.username }}
+        <p>Hello, {{ user.username }}</p>
       {% else %}
         <a href="{% url 'users:login' %}">Log in</a>
       {% endif %}
+      </span>
     </div>
     
   {% block content %}{% endblock content %}
@@ -42,9 +44,13 @@
   </div>
 
   <footer class="footer">
-    <h5>Add something like: 2021 - Alina Sansevich - link-to-my-GitHub</h5>
+    <span class="github-mark"><a href="https://github.com/alinasansevich/lab-inventory">
+      {% load static %}
+      <img src="{% static 'lab_inventory/GitHub-Mark-Light-32px.png' %}" alt="GitHub Mark Light"></a>
+    </span>
+    <span class="author">2021 | Alina Sansevich</span>
+    <span class="about">
+      <a href="{% url 'lab_inventory:about' %}">About this app</a></span>
   </footer>
-
-    
 </body>
 </html> 

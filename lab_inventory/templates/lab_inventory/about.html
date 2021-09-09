@@ -1,0 +1,24 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/about-styles.css' %}">
+  
+  <div class="container">
+    <p class="title">About this lab inventory...</p>
+    <div class="text">
+      <p>In this app, the items in inventory have been organized in four tables,
+      "Tissue Samples", "DNA Samples", "Lab Supplies" and "PCR Primers". The members of the lab may browse
+      the different tables to find where the desired item is stored.</p>
+      <p>The app has a built-in option of creating a user who, once logged in, 
+      would be able to add, edit or delete records in the inventory.
+      In this case, all members of the lab would be able to use the app to browse
+      the contents of the inventory, but only the authorized user would be able to make changes to it.</p>
+      <p>I have disabled this option to give those who visit this website the chance of using the app
+      without creating a user. The "logged in user view" of the app can be seen on this project's
+      <a id="readme" href="https://github.com/alinasansevich/lab-inventory#readme">READme</a>, on GitHub.</p>
+    </div>
+  </div>
+  
+{% endblock content %}
