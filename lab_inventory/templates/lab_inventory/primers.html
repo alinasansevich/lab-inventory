@@ -1,7 +1,11 @@
 {% extends "lab_inventory/base.html" %}
 
 {% block content %}
-    
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
+
+  <div class="container">  
     <h2>PCR Primers</h2>
     
     <table>
@@ -32,5 +36,6 @@
     </table>
     
     <a href="{% url 'lab_inventory:new_primer' %}">Add a new PCR primer</a>
+  </div>
         
 {% endblock content %}

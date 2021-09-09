@@ -2,14 +2,21 @@
 
 {% block content %}
 
-  <h3>Edit DNA entry:</h3>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
 
-    <form action="{% url 'lab_inventory:edit_dna' entry.id %}" method='post'>
-      {% csrf_token %}
-      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-      <button name="submit">Save Changes</button>
-      
-      <a href="{% url 'lab_inventory:dna' %}">Go back</a>
-    </form>
+  <div class="container">
+
+    <h3>Edit DNA entry:</h3>
+      <fieldset>
+        <form action="{% url 'lab_inventory:edit_dna' entry.id %}" method='post'>
+          {% csrf_token %}
+          {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+          <button name="submit">Save Changes</button>
+          
+          <a href="{% url 'lab_inventory:dna' %}">Go back</a>
+        </form>
+      </fieldset>
+  </div>
         
 {% endblock content %}

@@ -2,14 +2,18 @@
 
 {% block content %}
 
-  <h3>Edit tissue entry:</h3>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
 
-    <form action="{% url 'lab_inventory:edit_tissue' entry.id %}" method='post'>
-      {% csrf_token %}
-      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-      <button name="submit">Save Changes</button>
-      
-      <a href="{% url 'lab_inventory:tissues' %}">Go back</a>
-    </form>
+  <div class="container"> 
+    <h3>Edit tissue entry:</h3>
+      <form action="{% url 'lab_inventory:edit_tissue' entry.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+        <button name="submit">Save Changes</button>
+        
+        <a href="{% url 'lab_inventory:tissues' %}">Go back</a>
+      </form>
+  </div>
         
 {% endblock content %}

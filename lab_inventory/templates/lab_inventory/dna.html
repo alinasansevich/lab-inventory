@@ -1,6 +1,11 @@
 {% extends "lab_inventory/base.html" %}
 
 {% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
+
+  <div class="container">
     
     <h2>DNA Samples</h2>
 
@@ -22,7 +27,7 @@
       </tr>
       {% endfor %}
     </table>
-    
     <a href="{% url 'lab_inventory:new_dna' %}">Add new DNA sample</a>
+  </div>
         
 {% endblock content %}

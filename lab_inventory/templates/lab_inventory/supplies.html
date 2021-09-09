@@ -2,6 +2,11 @@
 
 {% block content %}
 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
+
+  <div class="container"> 
+
     <h2>Lab Supplies</h2>
 
     <table>
@@ -27,5 +32,6 @@
     </table>
     
     <a href="{% url 'lab_inventory:new_supplies' %}">Add new lab supplies</a>
+  </div>
         
 {% endblock content %}

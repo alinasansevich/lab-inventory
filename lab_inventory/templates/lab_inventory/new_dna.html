@@ -2,15 +2,21 @@
 
 {% block content %}
 
-  <h3>Add a new DNA sample:</h3>
-  <p>Add a new DNA sample below.<br>
-     Enter data in the following format:
-     "Organism / Tissue"   |   "2021-01-01"
-      </p>
-    <form action="{% url 'lab_inventory:new_dna' %}" method='post'>
-      {% csrf_token %}
-      {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-      <button name="submit">Add New DNA Sample</button>
-    </form>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
+
+  <div class="container">
+    <h3>Add a new DNA sample:</h3>
+      <fieldset>
+        <p>Add a new DNA sample below. Enter data in the following format:<br>
+         "Organism / Tissue"   |   "2021-01-01"
+        </p>
+        <form action="{% url 'lab_inventory:new_dna' %}" method='post'>
+          {% csrf_token %}
+          {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+          <button name="submit">Add New DNA Sample</button>
+        </form>
+      </fieldset>
+  </div>
         
 {% endblock content %}
