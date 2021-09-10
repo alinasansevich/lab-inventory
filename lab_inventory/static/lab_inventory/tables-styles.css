@@ -7,8 +7,20 @@ Color Palette:
 #A9A9A9 - DarkGray
 #778899 - LightSlateGray
 
-
+https://stackoverflow.com/questions/18742261/django-what-is-the-best-way-to-format-forms
 */
+
+th, td {
+  padding: 5px;
+}
+
+.form-wrapper {
+  padding: 12px;
+}
+
+.fieldWrapper {
+  padding: 3px;
+}
 
 .container {
   padding: 8px;
@@ -32,7 +44,24 @@ Color Palette:
   margin-top: 8px;
 }
 
-/*.subheader-links {
+#primers-table {
+  table-layout: auto;
+  width: 100%;
+}
+
+
+/*
+#myTable tr td:first-child {
+  width: 100px;
+}
+#myTable tr td:nth-child(2) {
+  width: 200px;
+}
+#myTable tr td:last-child {
+  width: 300px;
+}
+
+.subheader-links {
   color: #F8F8FF;
   background: #778899;
   padding: 10px;
