@@ -26,12 +26,13 @@
         <td>{{ item.date_received }}</td>
         <td>{{ item.date_opened }}</td>
         <td>{{ item.stored_freezer }}</td>
-        <td><a href="{% url 'lab_inventory:edit_supplies' item.id %}">Edit</a></td>
+        <td><a class="btns" href="{% url 'lab_inventory:edit_supplies' item.id %}">Edit</a></td>
       </tr>
       {% endfor %}
     </table>
-    
-    <a href="{% url 'lab_inventory:new_supplies' %}">Add new lab supplies</a>
+    <div class="btn">
+      <a class="btns" href="{% url 'lab_inventory:new_supplies' %}">Add new lab supplies</a>
+    </div>
   </div>
         
 {% endblock content %}

@@ -23,11 +23,13 @@
         <td>{{ item.extraction_date }}</td>
         <td>{{ item.stored_freezer }}</td>
         <td>{{ item.stored_box }}</td>
-        <td><a href="{% url 'lab_inventory:edit_dna' item.id %}">Edit</a></td>
+        <td><a class="btns" href="{% url 'lab_inventory:edit_dna' item.id %}">Edit</a></td>
       </tr>
       {% endfor %}
     </table>
-    <a href="{% url 'lab_inventory:new_dna' %}">Add new DNA sample</a>
+    <div class="btn">
+      <a class="btns" href="{% url 'lab_inventory:new_dna' %}">Add new DNA sample</a>
+    </div>
   </div>
         
 {% endblock content %}

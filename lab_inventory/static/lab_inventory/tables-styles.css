@@ -13,3 +13,41 @@ Color Palette:
 .container {
   padding: 8px;
 }
+
+.btns {
+  font-size: 12;
+  font-family: 'Courier Prime', monospace;
+  color: #F8F8FF;
+  background: #2F4F4F;
+  padding: 1px 4px;
+  margin: 0;
+  border-radius: 4px;
+  text-decoration: none; 
+}
+.btns:hover {
+  background: rgba(47, 79, 79, 60%);
+}
+
+.btn {
+  margin-top: 8px;
+}
+
+/*.subheader-links {
+  color: #F8F8FF;
+  background: #778899;
+  padding: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.subheader-links a {
+  color: #F8F8FF;
+  background: #2F4F4F;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.subheader-links a:hover {
+  background: rgba(47, 79, 79, 60%);
+}
+*/

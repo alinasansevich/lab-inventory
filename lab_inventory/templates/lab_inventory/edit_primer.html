@@ -12,8 +12,10 @@
         <form action="{% url 'lab_inventory:edit_primer' entry.id %}" method='post'>
           {% csrf_token %}
           {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-          <button name="submit">Save Changes</button> 
-          <a href="{% url 'lab_inventory:primers' %}">Go back</a>
+          <div class="btn">
+            <button type="submit">Save Changes</button>
+            <a class="btns" href="{% url 'lab_inventory:primers' %}">Go back</a>          
+          </div>
         </form>
       </fieldset>
   
