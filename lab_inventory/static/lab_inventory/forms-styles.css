@@ -10,9 +10,6 @@ Color Palette:
 https://stackoverflow.com/questions/18742261/django-what-is-the-best-way-to-format-forms
 */
 
-th, td {
-  padding: 5px;
-}
 label {
   width: 220px;
   display: inline-block;
@@ -51,6 +48,7 @@ button {
   margin: 0;
   border-radius: 4px;
   text-decoration: none;
+  float: left;
 }
 .btns:hover {
   background: rgba(47, 79, 79, 60%);
@@ -60,10 +58,6 @@ button {
   margin-top: 8px;
 }
 
-#primers-table {
-  table-layout: auto;
-  width: 100%;
-}
 
 
 /*
