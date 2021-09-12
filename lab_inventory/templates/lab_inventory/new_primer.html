@@ -7,18 +7,52 @@
 
   <div class="container"> 
 
-    <h3>Add a new PCR primer:</h3>
+    <h2>Add a new PCR primer:</h2>
     <fieldset>
-      <p>Add a new PCR primer below. Enter data in the following format:<br>
-       "Qwerty"   |   "2021-01-01"
-      </p>
-      <form action="{% url 'lab_inventory:new_primer' %}" method='post'>
-        {% csrf_token %}
-        {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-        <button name="submit">Add New PCR Primer</button>
-      </form>
+      <p>Add a new PCR primer below. Enter dates in the following format: "2021-01-01"</p>
+        <form action="{% url 'lab_inventory:new_primer' %}" method="post">
+          {% csrf_token %}
+          <div class="form-wrapper">
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.primer_name.errors }}
+                <label for="id_primer_name">Primer Name:</label>
+                {{ form.primer_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.primer_seq.errors }}
+                <label for="id_primer_seq">Primer Sequence:</label>
+                {{ form.primer_seq }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.purchase_order.errors }}
+                <label for="id_purchase_order">Purchase Order:</label>
+                {{ form.purchase_order }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.date_received.errors }}
+                <label for="id_date_received">Date Received:</label>
+                {{ form.date_received }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.date_opened.errors }}
+                <label for="id_date_opened">Date Opened:</label>
+                {{ form.date_opened }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.stored_freezer.errors }}
+                <label for="id_stored_freezer">Freezer / Shelf:</label>
+                {{ form.stored_freezer }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.stored_box.errors }}
+                <label for="id_stored_box">Box / Position:</label>
+                {{ form.stored_box }}
+            </div>
+          </div>
+          <button name="submit">Add New PCR Primer</button>         
+        </form>
     </fieldset>
-
   </div>
         
 {% endblock content %}

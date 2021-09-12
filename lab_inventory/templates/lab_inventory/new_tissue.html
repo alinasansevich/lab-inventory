@@ -6,17 +6,40 @@
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/forms-styles.css' %}">
 
   <div class="container"> 
-    <h3>Add a new tissue sample:</h3>
+    <h2>Add a new tissue sample:</h2>
       <fieldset>
         <p>Add a new tissue sample below. Enter data in the following format:<br>
          "Organism / Tissue"   |   "2021-01-01"
         </p>
-        <form action="{% url 'lab_inventory:new_tissue' %}" method='post'>
+        <form action="{% url 'lab_inventory:new_tissue' %}" method="post">
           {% csrf_token %}
-          {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
+          <div class="form-wrapper">
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.tissue_info.errors }}
+                <label for="id_tissue_info">Organism / Tissue:</label>
+                {{ form.tissue_info }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.date_received.errors }}
+                <label for="id_date_received">Date Received:</label>
+                {{ form.date_received }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.stored_freezer.errors }}
+                <label for="id_stored_freezer">Freezer / Shelf:</label>
+                {{ form.stored_freezer }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.stored_box.errors }}
+                <label for="id_stored_box">Box:</label>
+                {{ form.stored_box }}
+            </div>  
+          </div>
           <button name="submit">Add New Tissue</button>
         </form>
       </fieldset>
   </div>
         
 {% endblock content %}
+

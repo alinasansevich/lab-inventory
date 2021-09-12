@@ -6,16 +6,41 @@
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/forms-styles.css' %}">
 
   <div class="container"> 
-    <h3>Add new lab supplies:</h3>
+    <h2>Add new lab supplies:</h2>
       <fieldset>
-        <p>Add new lab supplies below. Enter data in the following format:<br>
-           "Qwerty"   |   "2021-01-01"
-        </p>
-        <form action="{% url 'lab_inventory:new_supplies' %}" method='post'>
+        <p>Add new lab supplies below. Enter dates in the following format: "2021-01-01"</p>
+        <form action="{% url 'lab_inventory:new_supplies' %}" method="post">
           {% csrf_token %}
-          {{ form.as_p }} <!-- 'as_p' modifier: all form elements will be rendered in paragraph format  -->
-          <button name="submit">Add New Supplies</button>
-        </form>      
+          <div class="form-wrapper">
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.product_name.errors }}
+                <label for="id_product_name">Product Name:</label>
+                {{ form.product_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.purchase_order.errors }}
+                <label for="id_purchase_order">Purchase Order:</label>
+                {{ form.purchase_order }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.date_received.errors }}
+                <label for="id_date_received">Date Received:</label>
+                {{ form.date_received }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.date_opened.errors }}
+                <label for="id_date_opened">Date Opened:</label>
+                {{ form.date_opened }}
+            </div> 
+            <div class="fieldWrapper">
+                {{ form.stored_freezer.errors }}
+                <label for="id_stored_freezer">Freezer / Shelf:</label>
+                {{ form.stored_freezer }}
+            </div>
+          </div>
+        <button name="submit">Add New Supplies</button>
+        </form>
       </fieldset>
 
   </div>
