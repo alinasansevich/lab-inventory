@@ -28,6 +28,7 @@ class Tissue(models.Model):
     ]    
     tissue_info = models.CharField(max_length=200)
     date_received = models.DateField(auto_now=False)
+    date_discarded = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
     stored_box = models.CharField(max_length=9)
     
@@ -58,6 +59,7 @@ class DNA(models.Model):
     ]    
     tissue_info = models.ForeignKey(Tissue, on_delete=models.PROTECT)
     extraction_date = models.DateField(auto_now=False)
+    date_discarded = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
     stored_box = models.CharField(max_length=9)
     
@@ -92,6 +94,7 @@ class Supply(models.Model):
     purchase_order = models.IntegerField(validators=[MinValueValidator(limit_value=0),])
     date_received = models.DateField(auto_now=False)
     date_opened = models.DateField(auto_now=False, null=True, blank=True)
+    date_discarded = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
     
     class Meta:
@@ -127,6 +130,7 @@ class Primer(models.Model):
     purchase_order = models.IntegerField(validators=[MinValueValidator(limit_value=0),])
     date_received = models.DateField(auto_now=False)
     date_opened = models.DateField(auto_now=False, null=True, blank=True)
+    date_discarded = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
     stored_box = models.CharField(max_length=9)
     
