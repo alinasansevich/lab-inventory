@@ -32,6 +32,27 @@
       </tr>
       {% endfor %}
     </table>
+      {% if primers.has_other_pages %}
+        <ul class="pagination">
+          {% if primers.has_previous %}
+            <li><a href="?page={{ primers.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in primers.paginator.page_range %}
+            {% if primers.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if primers.has_next %}
+            <li><a href="?page={{ primers.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}
     <div class="btn">
       <a class="btns" href="{% url 'lab_inventory:new_primer' %}">Add a new PCR primer</a>    
     </div>

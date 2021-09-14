@@ -66,7 +66,16 @@ button {
   table-layout: auto;
   width: 100%;
 }
+ul {
+  margin: 5px;
+  padding-left: 10px;
+}
 
+ul.pagination li {
+  display: inline;
+  text-decoration: none;
+  font-weight: bolder;
+}
 
 /*
 #myTable tr td:first-child {

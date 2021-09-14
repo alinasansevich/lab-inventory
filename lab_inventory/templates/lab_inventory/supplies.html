@@ -28,6 +28,27 @@
         </tr>
         {% endfor %}
       </table>
+      {% if supplies.has_other_pages %}
+        <ul class="pagination">
+          {% if supplies.has_previous %}
+            <li><a href="?page={{ supplies.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in supplies.paginator.page_range %}
+            {% if supplies.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if supplies.has_next %}
+            <li><a href="?page={{ supplies.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}
       <div class="btn">
         <a class="btns" href="{% url 'lab_inventory:new_supplies' %}">Add new lab supplies</a>
       </div>

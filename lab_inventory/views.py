@@ -6,6 +6,7 @@ Resources:
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import DNA, Primer, Supply, Tissue
 from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm
@@ -26,28 +27,68 @@ def about(request):
 def tissues(request):
     """Show all tissues' data."""
     tissues = Tissue.objects.all() # get data from db
-    context = {'tissues': tissues}
+    page = request.GET.get('page', 1)
+    
+    paginator = Paginator(tissues, 10)
+    try:
+        tissues_10 = paginator.page(page)
+    except PageNotAnInteger:
+        tissues_10 = paginator.page(1)
+    except EmptyPage:
+        paginator.page(paginator.num_pages)
+      
+    context = {'tissues': tissues_10}
     return render(request, 'lab_inventory/tissues.html', context)
 
 
 def dna(request):
     """Show data from extracted DNA samples."""
     dna = DNA.objects.all()
-    context = {'dna': dna}
+    page = request.GET.get('page', 1)
+    
+    paginator = Paginator(dna, 10)
+    try:
+        dna_10 = paginator.page(page)
+    except PageNotAnInteger:
+        dna_10 = paginator.page(1)
+    except EmptyPage:
+        paginator.page(paginator.num_pages)
+        
+    context = {'dna': dna_10}
     return render(request, 'lab_inventory/dna.html', context)
 
 
 def supplies(request):
     """Show data from lab supplies."""
     supplies = Supply.objects.all()
-    context = {'supplies': supplies}
+    page = request.GET.get('page', 1)
+    
+    paginator = Paginator(supplies, 10)
+    try:
+        supplies_10 = paginator.page(page)
+    except PageNotAnInteger:
+        supplies_10 = paginator.page(1)
+    except EmptyPage:
+        paginator.page(paginator.num_pages)
+        
+    context = {'supplies': supplies_10}
     return render(request, 'lab_inventory/supplies.html', context)
 
 
 def primers(request):
     """Show all PCR primers."""
     primers = Primer.objects.all()
-    context = {'primers': primers}
+    page = request.GET.get('page', 1)
+    
+    paginator = Paginator(primers, 10)
+    try:
+        primers_10 = paginator.page(page)
+    except PageNotAnInteger:
+        primers_10 = paginator.page(1)
+    except EmptyPage:
+        paginator.page(paginator.num_pages)    
+    
+    context = {'primers': primers_10}
     return render(request, 'lab_inventory/primers.html', context)
 
 
