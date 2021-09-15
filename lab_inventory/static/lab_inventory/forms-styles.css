@@ -58,36 +58,3 @@ button {
 .save-goback-btns {
   display: inline;  
 }
-
-
-
-/*
-#myTable tr td:first-child {
-  width: 100px;
-}
-#myTable tr td:nth-child(2) {
-  width: 200px;
-}
-#myTable tr td:last-child {
-  width: 300px;
-}
-
-.subheader-links {
-  color: #F8F8FF;
-  background: #778899;
-  padding: 10px;
-  margin-left: -10px;
-  margin-right: -10px;
-}
-.subheader-links a {
-  color: #F8F8FF;
-  background: #2F4F4F;
-  padding: 5px;
-  margin: 2px;
-  border-radius: 4px;
-  text-decoration: none;
-}
-.subheader-links a:hover {
-  background: rgba(47, 79, 79, 60%);
-}
-*/

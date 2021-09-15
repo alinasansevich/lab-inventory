@@ -18,53 +18,34 @@ https://stackoverflow.com/questions/21938028/how-can-i-get-a-favicon-to-show-up-
 https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/
 https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b
 https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page
-
-
 */
+
+/* Global styles
+------------------------------------*/
 * {
-    margin: 0;
+  margin: 0;
 }
 html, body {
     height: 100%;
+    margin: 0;
     background-color: #D3D3D3;
     font-family: 'Courier Prime', monospace;  
 }
 h2 {
   padding: 5px;
 }
-table, th, tr, td {
-  text-align: center;
-  border-style: inset;
-  border-spacing: 0;
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
-}
-
-td {
-  text-overflow: ellipsis;
-  overflow: scroll;
-  white-space: nowrap;
-}
-
-.narrow {
-  width: 100px;
-}
-
-.wide {
-  width: 350px;
-}
-
-.wrapper {
+.content-wrap {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -200px; /* the bottom margin is the negative value of the footer's height */
+    margin-bottom: -40px;
+    /*margin: 0 auto -100px;  the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
-    height: 200px; /* .push must be the same height as .footer */
+    height: 40px; /* .push must be the same height as .footer */
 }
 .footer {
+  /*position: absolute;*/
   color: #F8F8FF;
   font-size: 12px;
   background-color: #2F4F4F;
@@ -118,3 +99,26 @@ td {
   float: right;
   margin-right: 5px;
 }
+/* Table styles
+------------------------------------*/
+table, th, tr, td {
+  text-align: center;
+  border-style: inset;
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+td {
+  text-overflow: ellipsis;
+  overflow: scroll;
+  white-space: nowrap;
+}
+.narrow {
+  width: 100px;
+}
+.wide {
+  width: 350px;
+}
+
+
