@@ -56,8 +56,35 @@ class DNA(models.Model):
         ('-80/3', "Shelf 3"),
         ('-80/4', "Shelf 4"),
         )),
-    ]    
-    tissue_info = models.ForeignKey(Tissue, on_delete=models.PROTECT)
+    ]
+    tissue_choices = [
+        ('Solanum lycopersicum', (
+            ('Sl - fruit', 'Solanum lycopersicum / fruit'),
+            ('Sl - leaf', 'Solanum lycopersicum / leaf'),
+            )),
+        ('Helianthus annuus', (
+            ('Ha - seed', 'Helianthus annuus / seed'),
+            ('Ha - leaf', 'Helianthus annuus / leaf'),
+            )),
+        ('Zea mays', (
+            ('Zm - seed', 'Zea mays / seed'),
+            ('Zm - leaf', 'Zea mays / leaf'),
+            )),
+        ('Solanum tuberosum / tuber', (
+            ('St - tuber', 'Solanum tuberosum / tuber'),
+            ('St - leaf', 'Solanum tuberosum / leaf'),
+            )),
+        ('Oryza sativa', (
+            ('Os - seed', 'Oryza sativa / seed'),
+            ('Os - leaf', 'Oryza sativa / leaf'),
+            )),
+        ('Triticum aestivum', (
+            ('Ta - seed', 'Triticum aestivum / seed'),
+            ('Ta - leaf', 'Triticum aestivum / leaf'),
+            )),
+        ]
+    
+    tissue_info = models.CharField(max_length=100, choices=tissue_choices) # this could also be a ForeignKey instead of CharField
     extraction_date = models.DateField(auto_now=False)
     date_discarded = models.DateField(auto_now=False, null=True, blank=True)
     stored_freezer = models.CharField(max_length=21, choices=storage_choices)
@@ -137,4 +164,3 @@ class Primer(models.Model):
     def __str__(self):
         """Return a string representation of the model."""
         return self.primer_name
-

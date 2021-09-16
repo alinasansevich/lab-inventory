@@ -234,13 +234,3 @@ def edit_primer(request, entry_id):
     context = {'entry': entry,
                 'form': form}
     return render(request, 'lab_inventory/edit_primer.html', context)
-
-# https://stackoverflow.com/questions/38390177/what-is-a-noreversematch-error-and-how-do-i-fix-it
-
-
-
-
-
-
-
-

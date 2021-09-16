@@ -39,6 +39,11 @@
                 {{ form.date_opened }}
             </div>
             <div class="fieldWrapper">
+                {{ form.date_discarded.errors }}
+                <label for="id_date_discarded">Date Discarded:</label>
+                {{ form.date_discarded }}
+            </div>
+            <div class="fieldWrapper">
                 {{ form.stored_freezer.errors }}
                 <label for="id_stored_freezer">Freezer / Shelf:</label>
                 {{ form.stored_freezer }}

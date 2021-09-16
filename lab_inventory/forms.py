@@ -16,11 +16,13 @@ class TissueForm(forms.ModelForm):
         model = Tissue
         fields = ['tissue_info',
                   'date_received',
+                  'date_discarded',
                   'stored_freezer',
                   'stored_box',
                   ]
         labels = {'Organism / Tissue': '',
                   'Date Received': '',
+                  'Date Discarded': '',
                   'Freezer / Shelf': '',
                   'Box / Position': '',
                   }
@@ -31,11 +33,13 @@ class DNAForm(forms.ModelForm):
         model = DNA
         fields = ['tissue_info',
                   'extraction_date',
+                  'date_discarded',
                   'stored_freezer',
                   'stored_box',
                   ]
         labels = {'Organism / Tissue': '',
                   'Extraction Date': '',
+                  'Date Discarded': '',
                   'Freezer / Shelf': '',
                   'Box / Position': '',
                   }
@@ -48,12 +52,14 @@ class SupplyForm(forms.ModelForm):
                   'purchase_order',
                   'date_received',
                   'date_opened',
+                  'date_discarded',
                   'stored_freezer',
                   ]
         labels = {'Product Name': '',
                   'Purchase Order': '',
                   'Date Received': '',
                   'Date Opened': '',
+                  'Date Discarded': '',
                   'Freezer / Shelf': '',
                   }
 
@@ -66,6 +72,7 @@ class PrimerForm(forms.ModelForm):
                   'purchase_order',
                   'date_received',
                   'date_opened',
+                  'date_discarded',
                   'stored_freezer',
                   'stored_box',
                   ]
@@ -74,6 +81,7 @@ class PrimerForm(forms.ModelForm):
                   'Purchase Order': '',
                   'Date Received': '',
                   'Date Opened': '',
+                  'Date Discarded': '',
                   'Freezer / Shelf': '',
                   'Box / Position': '',
                   }
