@@ -21,17 +21,20 @@
         <th>Edit</th>
       </tr>
       {% for item in primers %}
-      <tr>
-        <td>{{ item.primer_name }}</td>
-        <td>{{ item.primer_seq }}</td>
-        <td>{{ item.purchase_order }}</td>
-        <td>{{ item.date_received }}</td>
-        <td>{{ item.date_opened }}</td>
-        <td>{{ item.date_discarded }}</td>
-        <td>{{ item.stored_freezer }}</td>
-        <td>{{ item.stored_box }}</td>
-        <td><a class="btns" href="{% url 'lab_inventory:edit_primer' item.id %}">Edit</a></td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>{{ item.primer_name }}</td>
+          <td>{{ item.primer_seq }}</td>
+          <td>{{ item.purchase_order }}</td>
+          <td>{{ item.date_received }}</td>
+          <td>{{ item.date_opened }}</td>
+          <td>{{ item.date_discarded }}</td>
+          <td>{{ item.stored_freezer }}</td>
+          <td>{{ item.stored_box }}</td>
+          <td><a class="btns" href="{% url 'lab_inventory:edit_primer' item.id %}">Edit</a></td>
+        </tr>      
+      </body>
+
       {% endfor %}
     </table>
       {% if primers.has_other_pages %}

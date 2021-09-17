@@ -19,15 +19,17 @@
           <th>Edit</th>
         </tr>
         {% for item in supplies %}
-        <tr>
-          <td width="100%">{{ item.product_name }}</td>
-          <td>{{ item.purchase_order }}</td>
-          <td>{{ item.date_received }}</td>
-          <td>{{ item.date_opened }}</td>
-          <td>{{ item.date_discarded }}</td>
-          <td>{{ item.stored_freezer }}</td>
-          <td><a class="btns" href="{% url 'lab_inventory:edit_supplies' item.id %}">Edit</a></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td width="100%">{{ item.product_name }}</td>
+            <td>{{ item.purchase_order }}</td>
+            <td>{{ item.date_received }}</td>
+            <td>{{ item.date_opened }}</td>
+            <td>{{ item.date_discarded }}</td>
+            <td>{{ item.stored_freezer }}</td>
+            <td><a class="btns" href="{% url 'lab_inventory:edit_supplies' item.id %}">Edit</a></td>
+          </tr>        
+        </body>
         {% endfor %}
       </table>
       {% if supplies.has_other_pages %}

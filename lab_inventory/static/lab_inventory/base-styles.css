@@ -39,7 +39,6 @@ h2 {
     height: auto !important;
     height: 100%;
     margin-bottom: -40px;
-    /*margin: 0 auto -100px;  the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
     height: 40px; /* .push must be the same height as .footer */
@@ -95,6 +94,10 @@ h2 {
 .subheader-links a:hover {
   background: rgba(47, 79, 79, 60%);
 }
+/*.selectlist {
+  float: right;
+  margin-right: 5px;  
+}*/
 .login {
   float: right;
   margin-right: 5px;

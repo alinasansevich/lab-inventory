@@ -7,25 +7,29 @@
 
   <div class="container"> 
     <h2>Tissue Samples</h2>
-      <table>
+      <table id="stripes">
       <col span="1" class="wide">
-        <tr>
-          <th>Organism / Tissue</th>
-          <th>Date Received</th>
-          <th>Date Discarded</th>
-          <th>Freezer / Shelf</th>
-          <th>Box</th>
-          <th>Edit</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Organism / Tissue</th>
+            <th>Date Received</th>
+            <th>Date Discarded</th>
+            <th>Freezer / Shelf</th>
+            <th>Box</th>
+            <th>Edit</th>
+          </tr>      
+        </head>
         {% for item in tissues %}
-        <tr>
-          <td>{{ item.tissue_info }}</td>
-          <td>{{ item.date_received }}</td>
-          <td>{{ item.date_discarded }}</td>
-          <td>{{ item.stored_freezer }}</td>
-          <td>{{ item.stored_box }}</td>
-          <td><a class="btns" href="{% url 'lab_inventory:edit_tissue' item.id %}">Edit</a></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>{{ item.tissue_info }}</td>
+            <td>{{ item.date_received }}</td>
+            <td>{{ item.date_discarded }}</td>
+            <td>{{ item.stored_freezer }}</td>
+            <td>{{ item.stored_box }}</td>
+            <td><a class="btns" href="{% url 'lab_inventory:edit_tissue' item.id %}">Edit</a></td>
+          </tr>        
+        </body>
         {% endfor %}
       </table>
       {% if tissues.has_other_pages %}

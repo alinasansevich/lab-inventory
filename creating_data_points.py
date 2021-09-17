@@ -43,13 +43,16 @@ stored_freezer_20 = ['-20/1', '-20/2', '-20/3', '-20/4']
 stored_box = [(x + 1) for x in range(10)]
 
 # to create primers
-seqs = ['5-ATGCAGGGGAAACATGATTCAGGAC-3', '5-GTCCTGAATCATGTTTCCCCTGCAC-3', '5-TGCCCTGCTACTGATACTACTCTT-3',
+seqs_f = ['5-ATGCAGGGGAAACATGATTCAGGAC-3', '5-GTCCTGAATCATGTTTCCCCTGCAC-3', '5-TGCCCTGCTACTGATACTACTCTT-3',
         '5-TGTCATCATTAAACAGAAATACAAA-3', '5-TCAGGTTTCCTCCCTCCGAAGGCGG-3', '5-TAGCTAACTTGGCCTGAAGCCTC-3',
         '5-GTCCAGGCGGTGGTGATGGAGTATA-3', '5-ATGGAGTATAAATGGAGAGGAGCTCT-3', '5-AAAGCGTCTCTGTGTGTTCAGATG-3',
         '5-GCTGCCACAAGCCCTGCAACATCCC-3',]
+seqs_r = ['5-GTCTCTGTAAAGCGTGTTCAGATG-3', '5-AACATGATTCATGCAGGGGAAGGAC-3', '5-GAGAATGGAGTATAAATGGGAGCTCT-3',
+          '5-CCCTGCAACGCTGCCACAAGATCCC-3', '5-GTGGTGATGGGTCCAGGCGAGTATA-3', '5-TCATGTTTCCGTCCTGAACCTGCAC-3',
+          '5-TTGGCCTGAATAGCTAACGCCTC-3', '5-TCTCCCTCCGAAGCAGGTTTCGCGG-3', '5-TGCTACTACTCTCCTGCTACTGAT-3',
+          '5-CATTAAACAGAATGTCATATACAAA-3']
 organism = ['Sl', 'Ha', 'Zm', 'St', 'Os', 'Ta']
 primer_num = [(x + 1) for x in range(42)]
-strand = ['F', 'R']
 
 def get_box_position(stored_box):
     """Return a str that represents a position in a 10x10 storage box,
@@ -60,10 +63,10 @@ def get_box_position(stored_box):
     return col + ' / ' + str(row)
 
 
-def create_primer_name(organism, primer_num, strand):
+def create_primer_name(organism, primer_num):
     first = random.choice(organism)
     second = random.choice(primer_num)
-    third = random.choice(strand)
+    third = 'F'
     return first + '-' + str(second) + '-' + third
 
 
@@ -120,9 +123,12 @@ def create_supplies_data_points():
 def create_primers_data_points():
     primers_data_points = []
     data_point = {}
-    for i in range(300):
-        data_point['primer_name'] = create_primer_name(organism, primer_num, strand)
-        data_point['primer_seq'] = random.choice(seqs)
+    for i in range(150):
+        forward = create_primer_name(organism, primer_num)
+        reverse = forward[:5] + 'R'
+        # create forward primer
+        data_point['primer_name'] = forward
+        data_point['primer_seq'] = random.choice(seqs_f)
         data_point['purchase_order'] = i + 200
         d1 = datetime.date(random.randint(2000,2020), random.randint(1,12), random.randint(1,28))
         d2 = d1 + datetime.timedelta(weeks=2)
@@ -130,10 +136,24 @@ def create_primers_data_points():
         data_point['date_received'] = str(d1)
         data_point['date_opened'] = str(d2)
         data_point['date_discarded'] = str(d3)
-        data_point['stored_freezer'] = random.choice(stored_freezer_20)
-        data_point['stored_box'] = get_box_position(stored_box)
+        freezer = random.choice(stored_freezer_20)
+        box_position = get_box_position(stored_box)
+        data_point['stored_freezer'] = freezer
+        data_point['stored_box'] = box_position
         primers_data_points.append(data_point)
-        data_point = {}   
+        data_point = {}
+        # create reverse primer
+        data_point['primer_name'] = reverse
+        data_point['primer_seq'] = random.choice(seqs_r)
+        data_point['purchase_order'] = i + 200
+        data_point['date_received'] = str(d1)
+        data_point['date_opened'] = str(d2)
+        data_point['date_discarded'] = str(d3)
+        data_point['stored_freezer'] = freezer
+        data_point['stored_box'] = box_position[:4] + str(int(box_position[4:]) + 1)
+        primers_data_points.append(data_point)
+        data_point = {}
+        
     return primers_data_points
 
 # create all data points

@@ -10,6 +10,10 @@ Color Palette:
 */
 h2 {
   padding: 5px;
+  display: flex;
+}
+section {
+  display: flex;
 }
 th, td {
   padding: 5px;
@@ -76,33 +80,21 @@ ul.pagination li {
   font-weight: bolder;
 }
 
+/* zebra striping */
 /*
-#myTable tr td:first-child {
-  width: 100px;
+tbody tr:nth-child(odd) {
+  background-color: #778899;
 }
-#myTable tr td:nth-child(2) {
-  width: 200px;
-}
-#myTable tr td:last-child {
-  width: 300px;
+*/
+#stripes tr:nth-child(even) {
+  background-color: #778899;
 }
 
-.subheader-links {
-  color: #F8F8FF;
-  background: #778899;
-  padding: 10px;
-  margin-left: -10px;
-  margin-right: -10px;
-}
-.subheader-links a {
-  color: #F8F8FF;
-  background: #2F4F4F;
-  padding: 5px;
-  margin: 2px;
-  border-radius: 4px;
-  text-decoration: none;
-}
-.subheader-links a:hover {
-  background: rgba(47, 79, 79, 60%);
+/*
+table {
+  background-color: #D3D3D3;
+}*/
+/*tbody tr {
+  background-image: url(noise.png);
 }
 */

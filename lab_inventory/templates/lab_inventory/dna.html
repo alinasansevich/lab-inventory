@@ -6,7 +6,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
 
   <div class="container">
-    <h2>DNA Samples</h2>
+    <section>
+      <h2>DNA Samples</h2>
+      <label for="selectlist" class="selectlist">Options:</label>
+      <select id="selectlist" name="selectlist" class="selectlist">
+        <option>Filter</option>
+        <option>Sort</option>
+      </select>     
+    </section>
       <table>
       <col span="1" class="wide">
         <tr>
@@ -18,14 +25,16 @@
           <th>Edit</th>
         </tr>
         {% for item in dna %}
-        <tr>
-          <td>{{ item.tissue_info }}</td>
-          <td>{{ item.extraction_date }}</td>
-          <td>{{ item.date_discarded }}</td>
-          <td>{{ item.stored_freezer }}</td>
-          <td>{{ item.stored_box }}</td>
-          <td><a class="btns" href="{% url 'lab_inventory:edit_dna' item.id %}">Edit</a></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>{{ item.tissue_info }}</td>
+            <td>{{ item.extraction_date }}</td>
+            <td>{{ item.date_discarded }}</td>
+            <td>{{ item.stored_freezer }}</td>
+            <td>{{ item.stored_box }}</td>
+            <td><a class="btns" href="{% url 'lab_inventory:edit_dna' item.id %}">Edit</a></td>
+          </tr>
+        </tbody>
         {% endfor %}
       </table>
       {% if dna.has_other_pages %}
