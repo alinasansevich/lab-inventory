@@ -10,21 +10,31 @@ Color Palette:
 */
 h2 {
   padding: 5px;
-  display: flex;
+  /*display: flex;*/
 }
-section {
+nav ul {
   display: flex;
+  margin: 0 -10px;
+  list-style-type: none;
+  padding: 0;
+}
+nav li {
+    margin: 0 10px;
+}
+.push-right {
+  margin-left: auto;
 }
 th, td {
   padding: 5px;
 }
 label {
-  width: 220px;
+  width: 80px;
   display: inline-block;
   float: left;
   clear: left;
   text-align: left;
-  padding: 3px;
+  padding-top: 7px;
+  font-weight: bold;
 }
 select, input {
   display: inline-block;

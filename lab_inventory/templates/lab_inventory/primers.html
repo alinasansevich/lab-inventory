@@ -5,9 +5,19 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
 
-  <div class="container">  
-    <h2>PCR Primers</h2>
-    
+  <div class="container">
+    <nav>
+      <ul>
+        <li><h2>PCR Primers</h2></li>
+        <li class="push-right">
+          <label for="selectlist" class="selectlist">Options:</label>
+          <select id="selectlist" name="selectlist" class="selectlist">
+            <option>Filter</option>
+            <option>Sort</option>
+          </select>
+        </li>
+      </ul>
+    </nav>    
     <table id="primers-table">
       <tr>
         <th>Primer Name</th>
