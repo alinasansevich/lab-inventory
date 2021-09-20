@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import DNA, Primer, Supply, Tissue
-from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm
+from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterPrimerForm
 
 
 ### ### ### base views ### ### ###
@@ -234,3 +234,44 @@ def edit_primer(request, entry_id):
     context = {'entry': entry,
                 'form': form}
     return render(request, 'lab_inventory/edit_primer.html', context)
+
+
+### ### ### edit views ### ### ###
+
+def filter_primers(request):
+    """The filter page for primers."""
+    form = FilterPrimerForm(data=request.POST)
+    context = {'form': form}
+    return render(request, 'lab_inventory/filter_primers.html', context)
+
+
+def query_primers_db(request):
+    """Search XXXXXXXXx """
+    if request.method == "POST":
+        user_input = request.POST['textfield']
+        query = Primer.objects.get(primer_name__contains=user_input)
+    
+    context = {'query': query}
+    return render(request, 'lab_inventory/primers.html', context)
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

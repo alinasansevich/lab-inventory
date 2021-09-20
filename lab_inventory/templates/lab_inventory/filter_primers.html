@@ -9,25 +9,25 @@
     <h2>Select filter criteria:</h2>
     <fieldset>
       <legend>Filter by:</legend>
+      <label for="primer_name">Primer Name</label>
       <input id="primer_name" name="radiobutton"
              type="radio" value="Primer Name" checked>
-      <label for="primer_name">Primer Name</label>   
+      <label for="purchase_order">Purchase Order</label>   
       <input id="purchase_order" name="radiobutton"
              type="radio" value="Purchase Order">
-      <label for="purchase_order">Purchase Order</label>   
+      <label for="date_received">Date Received</label>   
       <input id="date_received" name="radiobutton"
-             type="radio" value="Date Received"
-      <label for="date_received">Date Received</label>
-      <input id="date_opened" name="radiobutton"
-             type="radio" value="Date Opened"
+             type="radio" value="Date Received">
       <label for="date_opened">Date Opened</label>
-      <input id="date_discarded" name="radiobutton"
-             type="radio" value="Date Discarded"
+      <input id="date_opened" name="radiobutton"
+             type="radio" value="Date Opened">
       <label for="date_discarded">Date Discarded</label>
+      <input id="date_discarded" name="radiobutton"
+             type="radio" value="Date Discarded">
     </fieldset>
     <fieldset>
     <p>Enter dates in the following format: "2021-01-01"</p>
-      <form action="{% url 'lab_inventory:edit_primer' entry.id %}" method="post">
+      <form action="{% url 'lab_inventory:primers' %}" method="post">
         {% csrf_token %}
         <div class="form-wrapper">
           {{ form.non_field_errors }}
@@ -36,7 +36,6 @@
               <label for="id_primer_name">Primer Name:</label>
               {{ form.primer_name }}
           </div>
-
           <div class="fieldWrapper">
               {{ form.purchase_order.errors }}
               <label for="id_purchase_order">Purchase Order:</label>
@@ -57,10 +56,9 @@
               <label for="id_date_discarded">Date Discarded:</label>
               {{ form.date_discarded }}
           </div>
-
         </div>
         <div class="save-goback-btns">
-          <button name="submit">Save Changes</button>
+          <button name="submit">Search</button>
           <a class="btns" href="{% url 'lab_inventory:primers' %}">Go back</a>          
         </div>
       </form>
