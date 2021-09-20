@@ -11,6 +11,8 @@ from django import forms
 from .models import DNA, Primer, Supply, Tissue
 
 
+### ### ### add new / edit forms ### ### ###
+
 class TissueForm(forms.ModelForm):
     class Meta:
         model = Tissue
@@ -86,3 +88,20 @@ class PrimerForm(forms.ModelForm):
                   'Box / Position': '',
                   }
 
+### ### ### filter queryset forms ### ### ###
+
+class FilterPrimerForm(forms.ModelForm):
+    class Meta:
+        model = Primer
+        fields = ['primer_name',
+                  'purchase_order',
+                  'date_received',
+                  'date_opened',
+                  'date_discarded',
+                  ]
+        labels = {'Primer Name': '',
+                  'Purchase Order': '',
+                  'Date Received': '',
+                  'Date Opened': '',
+                  'Date Discarded': '',
+                  }
