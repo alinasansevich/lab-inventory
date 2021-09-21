@@ -58,3 +58,39 @@ button {
 .save-goback-btns {
   display: inline;  
 }
+
+#radiobtn label {
+  padding: 0;
+  width: 250px;
+  display: inline-block;
+  float: left;
+  clear: left;
+  text-align: left;
+}
+#radiobtn input {
+  display: inline-block;
+  float: left;
+  padding: 3px;
+  width: 50px;
+}
+#radiobtn ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

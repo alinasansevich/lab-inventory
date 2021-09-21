@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import DNA, Primer, Supply, Tissue
-from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterPrimerForm
+from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterPrimerForm, PrimerRadiobtn
 
 
 ### ### ### base views ### ### ###
@@ -239,17 +239,34 @@ def edit_primer(request, entry_id):
 ### ### ### edit views ### ### ###
 
 def filter_primers(request):
-    """The filter page for primers."""
-    form = FilterPrimerForm(data=request.POST)
-    context = {'form': form}
+    """The base filter page for primers."""
+    radiobtn = PrimerRadiobtn(request.POST)
+    form = FilterPrimerForm(request.POST or None) # This prevents the error message: "This field is required"
+    
+    context = {
+      'radiobtn': radiobtn,
+      'form': form,
+               }
     return render(request, 'lab_inventory/filter_primers.html', context)
 
 
 def query_primers_db(request):
     """Search XXXXXXXXx """
     if request.method == "POST":
-        user_input = request.POST['textfield']
-        query = Primer.objects.get(primer_name__contains=user_input)
+        form = FilterPrimerForm(request.POST)
+        if form.is_valid():
+            # process the data
+            #
+            # user_input = request.POST['textfield']
+            # query = Primer.objects.get(primer_name__contains=user_input)
+            #
+            #
+            return HttpResponseRedirect('/thanks/')
+    
+    else:
+        form = FilterPrimerForm()        
+        
+
     
     context = {'query': query}
     return render(request, 'lab_inventory/primers.html', context)

@@ -9,25 +9,21 @@
     <h2>Select filter criteria:</h2>
     <fieldset>
       <legend>Filter by:</legend>
-      <label for="primer_name">Primer Name</label>
-      <input id="primer_name" name="radiobutton"
-             type="radio" value="Primer Name" checked>
-      <label for="purchase_order">Purchase Order</label>   
-      <input id="purchase_order" name="radiobutton"
-             type="radio" value="Purchase Order">
-      <label for="date_received">Date Received</label>   
-      <input id="date_received" name="radiobutton"
-             type="radio" value="Date Received">
-      <label for="date_opened">Date Opened</label>
-      <input id="date_opened" name="radiobutton"
-             type="radio" value="Date Opened">
-      <label for="date_discarded">Date Discarded</label>
-      <input id="date_discarded" name="radiobutton"
-             type="radio" value="Date Discarded">
+      <form id="radiobtn" action="" method="post">
+        {% csrf_token %}
+        {{ radiobtn.CHOOSE_FIELD }}
+      </form>    
     </fieldset>
     <fieldset>
-    <p>Enter dates in the following format: "2021-01-01"</p>
-      <form action="{% url 'lab_inventory:primers' %}" method="post">
+      <h4>Notes:</h4>
+      <p>Enter dates in the following format: "2021-01-01"</p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </fieldset>
+    <fieldset>
+      <legend>Enter search values:</legend>
+      <form action="{% url 'lab_inventory:primers' %}" method="post"> <!-- Create e new html for search results??? -->
         {% csrf_token %}
         <div class="form-wrapper">
           {{ form.non_field_errors }}
