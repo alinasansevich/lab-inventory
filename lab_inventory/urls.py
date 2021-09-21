@@ -46,7 +46,9 @@ urlpatterns = [
     # Page for editing a PCR primer entry
     path('edit_primer/<int:entry_id>', views.edit_primer, name='edit_primer'),
     # Page for querying the Primer table
-    path('filter_primers/', views.filter_primers, name='filter_primers'),    
+    path('filter_primers/', views.filter_primers, name='filter_primers'), 
+    # Page for displaying primers' search results
+    path('query_primers/', views.filter_primers, name='query_primers'),
     ]
 
 

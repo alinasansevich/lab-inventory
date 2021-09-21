@@ -240,55 +240,29 @@ def edit_primer(request, entry_id):
 
 def filter_primers(request):
     """The base filter page for primers."""
-    radiobtn = PrimerRadiobtn(request.POST)
-    form = FilterPrimerForm(request.POST or None) # This prevents the error message: "This field is required"
-    
-    context = {
-      'radiobtn': radiobtn,
-      'form': form,
-               }
-    return render(request, 'lab_inventory/filter_primers.html', context)
-
-
-def query_primers_db(request):
-    """Search XXXXXXXXx """
     if request.method == "POST":
-        form = FilterPrimerForm(request.POST)
+        radiobtn = PrimerRadiobtn(request.POST)
+        form = FilterPrimerForm(request.POST or None) # This prevents the error message: "This field is required"
+        
         if form.is_valid():
             # process the data
-            #
-            # user_input = request.POST['textfield']
-            # query = Primer.objects.get(primer_name__contains=user_input)
-            #
-            #
-            return HttpResponseRedirect('/thanks/')
+            filter_by = request.POST.get('CHOOSE_FIELD')  ####
+            filter_by = radiobtn.cleaned_data['primer_name']  ###
+            print('/n/n/n')
+            print(filter_by)
+            print('/n/n/n')
+            print(type(filter_by))
+            print('/n/n/n')
+            if filter_by == "Primer Name":
+           ###     query = Primer.objects.get(filter_by 'format this!' __contains=filter_by) # 
+                result = {'query': query}
+                return render(request, 'lab_inventory/query_primers.html', result)
     
     else:
-        form = FilterPrimerForm()        
-        
-
-    
-    context = {'query': query}
-    return render(request, 'lab_inventory/primers.html', context)
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        radiobtn = PrimerRadiobtn(request.POST)
+        form = FilterPrimerForm(request.POST or None)
+        context = {
+            'radiobtn': radiobtn,
+            'form': form,
+            }
+    return render(request, 'lab_inventory/filter_primers.html', context)

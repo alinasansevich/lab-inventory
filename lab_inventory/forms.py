@@ -90,23 +90,6 @@ class PrimerForm(forms.ModelForm):
 
 ### ### ### filter queryset forms ### ### ###
 
-class FilterPrimerForm(forms.ModelForm): # redo this without Meta!
-    class Meta:
-        model = Primer
-        fields = ['primer_name',
-                  'purchase_order',
-                  'date_received',
-                  'date_opened',
-                  'date_discarded',
-                  ]
-        labels = {'Primer Name': '',
-                  'Purchase Order': '',
-                  'Date Received': '',
-                  'Date Opened': '',
-                  'Date Discarded': '',
-                  }
-
-
 CHOOSE_FIELD = [
     ('primer_name', 'Primer Name'),
     ('purchase_order', 'Purchase Order'),
@@ -114,8 +97,18 @@ CHOOSE_FIELD = [
     ('date_opened', 'Date Opened'),
     ('date_discarded', 'Date Discarded'),
     ]
+
 class PrimerRadiobtn(forms.Form):
-    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD))
+    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD), initial='primer_name')
+
+
+class FilterPrimerForm(forms.Form):
+    contains = forms.CharField(max_length=100, required=False)
+    exact_match = forms.CharField(max_length=100, required=False)
+    date_received = forms.DateField(required=False)
+    date_opened = forms.DateField(required=False)
+    date_discarded = forms.DateField(required=False)
+
 
 
     

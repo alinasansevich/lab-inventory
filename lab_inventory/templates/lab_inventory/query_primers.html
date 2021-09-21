@@ -1,0 +1,52 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/tables-styles.css' %}">
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li><h2>PCR Primers - Search results for (enter search value here)</h2></li>
+        <li class="push-right dropdown">
+          <a href="javascript:void(0)" class="dropbtn btns">Options</a>
+          <div class="dropdown-content">
+            <a href="{% url 'lab_inventory:filter_primers' %}">Filter</a>
+            <a href="#">Sort</a>
+          </div>
+        </li>        
+      </ul>
+    </nav>    
+    <table id="primers-table">
+      <tr>
+        <th>Primer Name</th>
+        <th>Primer Sequence</th>
+        <th>Purchase Order</th>
+        <th>Date Received</th>
+        <th>Date Opened</th>
+        <th>Date Discarded</th>
+        <th>Freezer / Shelf</th>
+        <th>Box / Position</th>
+      </tr>
+      {% for item in primers %}
+      <tbody>
+        <tr>
+          <td>{{ item.primer_name }}</td>
+          <td>{{ item.primer_seq }}</td>
+          <td>{{ item.purchase_order }}</td>
+          <td>{{ item.date_received }}</td>
+          <td>{{ item.date_opened }}</td>
+          <td>{{ item.date_discarded }}</td>
+          <td>{{ item.stored_freezer }}</td>
+          <td>{{ item.stored_box }}</td>
+        </tr>      
+      </body>
+      {% endfor %}
+    </table>
+    <div class="save-goback-btns">
+      <a class="btns" href="{% url 'lab_inventory:primers' %}">Go back</a>          
+    </div>
+  </div>
+        
+{% endblock content %}

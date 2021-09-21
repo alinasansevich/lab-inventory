@@ -16,46 +16,49 @@
     </fieldset>
     <fieldset>
       <h4>Notes:</h4>
-      <p>Enter dates in the following format: "2021-01-01"</p>
-      <p></p>
-      <p></p>
-      <p></p>
+      <ul>
+        <li>Enter dates in the following format: "2021-01-01"</li>
+        <li>The "Contains..." search field is case sensitive.</li>
+        <li></li>
+        <li></li>
+      </ul>
     </fieldset>
     <fieldset>
-      <legend>Enter search values:</legend>
-      <form action="{% url 'lab_inventory:primers' %}" method="post"> <!-- Create e new html for search results??? -->
+      <legend>Enter search values (choose only one! sdjn;arnb;jdf):</legend>
+      <form action="{% url 'lab_inventory:query_primers' %}" method="post"> <!-- Create e new html for search results??? -->
         {% csrf_token %}
         <div class="form-wrapper">
           {{ form.non_field_errors }}
           <div class="fieldWrapper">
-              {{ form.primer_name.errors }}
-              <label for="id_primer_name">Primer Name:</label>
-              {{ form.primer_name }}
+              {{ form.contains.errors }}
+              <label for="id_contains">Contains...:</label>
+              {{ form.contains }}
+              <button class="save-goback-btns" name="submit">Search</button>
           </div>
           <div class="fieldWrapper">
-              {{ form.purchase_order.errors }}
-              <label for="id_purchase_order">Purchase Order:</label>
-              {{ form.purchase_order }}
+              {{ form.exact_match.errors }}
+              <label for="id_exact_match">Exact match:</label>
+              {{ form.exact_match }}
+              <button class="save-goback-btns" name="submit">Search</button>
           </div>
           <div class="fieldWrapper">
               {{ form.date_received.errors }}
               <label for="id_date_received">Date Received:</label>
               {{ form.date_received }}
+              <button class="save-goback-btns" name="submit">Search</button>
           </div>
           <div class="fieldWrapper">
               {{ form.date_opened.errors }}
               <label for="id_date_opened">Date Opened:</label>
               {{ form.date_opened }}
+              <button class="save-goback-btns" name="submit">Search</button>
           </div>
           <div class="fieldWrapper">
               {{ form.date_discarded.errors }}
               <label for="id_date_discarded">Date Discarded:</label>
               {{ form.date_discarded }}
+              <button class="save-goback-btns" name="submit">Search</button>
           </div>
-        </div>
-        <div class="save-goback-btns">
-          <button name="submit">Search</button>
-          <a class="btns" href="{% url 'lab_inventory:primers' %}">Go back</a>          
         </div>
       </form>
     </fieldset>
