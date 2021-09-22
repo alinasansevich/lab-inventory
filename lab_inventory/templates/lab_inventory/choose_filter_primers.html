@@ -1,0 +1,19 @@
+{% extends "lab_inventory/base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/forms-styles.css' %}">
+
+  <div class="container"> 
+    <h2>Select filter criteria:</h2>
+    <fieldset>
+      <legend>Filter by:</legend>
+      <form id="radiobtn" action="" method="GET">
+        {% csrf_token %}
+        {{ radiobtn_form.CHOOSE_FIELD }}
+      </form>
+    </fieldset>
+  </div>
+        
+{% endblock content %}

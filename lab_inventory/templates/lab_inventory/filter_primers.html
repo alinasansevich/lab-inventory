@@ -6,14 +6,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/forms-styles.css' %}">
 
   <div class="container"> 
-    <h2>Select filter criteria:</h2>
-    <fieldset>
-      <legend>Filter by:</legend>
-      <form id="radiobtn" action="" method="post">
-        {% csrf_token %}
-        {{ radiobtn.CHOOSE_FIELD }}
-      </form>    
-    </fieldset>
+    <h2>Search by {{ filter_by }}</h2>
+
     <fieldset>
       <h4>Notes:</h4>
       <ul>
@@ -24,7 +18,7 @@
       </ul>
     </fieldset>
     <fieldset>
-      <legend>Enter search values (choose only one! sdjn;arnb;jdf):</legend>
+      <legend>Enter search terms (choose only one! sdjn;arnb;jdf):</legend>
       <form action="{% url 'lab_inventory:query_primers' %}" method="post"> <!-- Create e new html for search results??? -->
         {% csrf_token %}
         <div class="form-wrapper">

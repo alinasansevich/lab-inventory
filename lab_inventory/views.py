@@ -236,33 +236,42 @@ def edit_primer(request, entry_id):
     return render(request, 'lab_inventory/edit_primer.html', context)
 
 
-### ### ### edit views ### ### ###
+### ### ### filter views ### ### ###
 
+
+def choose_filter_primers(request):
+    """The choose filter page for primers."""
+    if request.method == "GET":
+        radiobtn_form = PrimerRadiobtn(request.GET)
+        
+        if radiobtn_form.is_valid():
+            # get value from user input and store it in request.session dict
+            request.session['filter_by'] = radiobtn_form.cleaned_data['CHOOSE_FIELD']
+            # go to the next step in the search form
+            return render(request, 'lab_inventory/filter_primers.html')
+    else:
+        radiobtn_form = PrimerRadiobtn()
+    
+    return render(request, 'lab_inventory/choose_filter_primers.html', {'radiobtn_form': radiobtn_form})
+
+          
 def filter_primers(request):
     """The base filter page for primers."""
+    # get filter field from views.choose_filter_primers
+    filter_by = request.session.get('filter_by')
+    
     if request.method == "POST":
-        radiobtn = PrimerRadiobtn(request.POST)
-        form = FilterPrimerForm(request.POST or None) # This prevents the error message: "This field is required"
+        form = FilterPrimerForm(request.POST or None)
         
         if form.is_valid():
-            # process the data
-            filter_by = request.POST.get('CHOOSE_FIELD')  ####
-            filter_by = radiobtn.cleaned_data['primer_name']  ###
-            print('/n/n/n')
-            print(filter_by)
-            print('/n/n/n')
-            print(type(filter_by))
-            print('/n/n/n')
-            if filter_by == "Primer Name":
-           ###     query = Primer.objects.get(filter_by 'format this!' __contains=filter_by) # 
+            search_term = form.cleaned_data.get("contains")
+            if filter_by == 'primer_name':
+                query = Primer.objects.get(primer_name__contains=search_term)
                 result = {'query': query}
                 return render(request, 'lab_inventory/query_primers.html', result)
-    
+        else:
+            return render(request, 'lab_inventory/about.html')
     else:
-        radiobtn = PrimerRadiobtn(request.POST)
-        form = FilterPrimerForm(request.POST or None)
-        context = {
-            'radiobtn': radiobtn,
-            'form': form,
-            }
-    return render(request, 'lab_inventory/filter_primers.html', context)
+        context = {'form': form}
+        
+        return render(request, 'lab_inventory/filter_primers.html', context)

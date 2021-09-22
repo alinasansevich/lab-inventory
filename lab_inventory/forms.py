@@ -4,6 +4,8 @@
 Created on Fri Aug 27 13:38:24 2021
 
 @author: alina
+
+https://stackoverflow.com/questions/57422465/how-to-get-radio-button-value-from-form-in-view-py-file
 """
 
 from django import forms
@@ -99,7 +101,8 @@ CHOOSE_FIELD = [
     ]
 
 class PrimerRadiobtn(forms.Form):
-    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD), initial='primer_name')
+    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD,
+                                                            attrs={'onchange': 'submit()'}))
 
 
 class FilterPrimerForm(forms.Form):
