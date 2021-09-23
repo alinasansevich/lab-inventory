@@ -9,7 +9,7 @@
     <h2>Select filter criteria:</h2>
     <fieldset>
       <legend>Filter by:</legend>
-      <form id="radiobtn" action="" method="GET">
+      <form id="radiobtn" action="{% url 'lab_inventory:filter_primers' %}" method="GET">
         {% csrf_token %}
         {{ radiobtn_form.CHOOSE_FIELD }}
       </form>

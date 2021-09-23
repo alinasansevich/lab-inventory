@@ -259,19 +259,70 @@ def filter_primers(request):
     """The base filter page for primers."""
     # get filter field from views.choose_filter_primers
     filter_by = request.session.get('filter_by')
-    
+    print('\n\n')
+    print('filter_by:', filter_by)
+    print('\n\n')
+    print(request.GET)
+    print(request.POST)
+    print('\n\n')
     if request.method == "POST":
-        form = FilterPrimerForm(request.POST or None)
-        
+        form = FilterPrimerForm(request.POST)# or None)
         if form.is_valid():
-            search_term = form.cleaned_data.get("contains")
-            if filter_by == 'primer_name':
-                query = Primer.objects.get(primer_name__contains=search_term)
-                result = {'query': query}
-                return render(request, 'lab_inventory/query_primers.html', result)
+            # get value from user input and store it in request.session dict
+            request.session['contains'] = form.cleaned_data.get("contains")
+            clue = request.session['contains']
+            print('\n\n')
+            print('form.cleaned_data', form.cleaned_data, type(form.cleaned_data))
+            print('clue', clue)
+            print('\n\n')            
+            # go to the next step in the search form
+            return render(request, 'lab_inventory/search_results_primers.html')
         else:
-            return render(request, 'lab_inventory/about.html')
+            return render(request, 'lab_inventory/choose_filter_primers.html')
     else:
+        form = FilterPrimerForm(request.POST)
         context = {'form': form}
         
-        return render(request, 'lab_inventory/filter_primers.html', context)
+    return render(request, 'lab_inventory/filter_primers.html', context)
+
+
+def search_results_primers(request):
+    """Display search results for filtered primers."""
+    search_term = request.GET['contains']
+    # print('\n\n')
+    # print("0" + search_term + "123", type(search_term), 'number 2')
+    # print('\n\n')
+    # print(request.GET)
+    # print(request.GET['contains'], type(request.GET['contains']))
+    # print('\n\n')
+    filter_by = request.session.get('filter_by')
+    # print('\n\n')
+    # print('filter_by:', filter_by)
+    # print('\n\n')
+    if filter_by == 'primer_name':
+        query = Primer.objects.filter(primer_name__contains=search_term).values()
+        result = {'query': query}
+        # print('\n\n')
+        # print(result['query'])
+        # print('\n\n')
+        # print(type(result['query']))
+        result_dict = {}
+        count = 1
+        for item in result['query']:
+            item_dict = {k:v for (k,v) in item.items()}
+            result_dict[count] = item_dict
+            count += 1
+        # for k,v in result_dict.items():
+        #     print(k, '\t', v)
+        # print('\n\n')
+        print("I'm here!!!")
+        print('\n\n')
+        return render(request, 'lab_inventory/search_results_primers.html', result_dict)
+
+
+
+
+
+
+
+

@@ -29,19 +29,22 @@
         <th>Freezer / Shelf</th>
         <th>Box / Position</th>
       </tr>
-      {% for item in primers %}
-      <tbody>
-        <tr>
-          <td>{{ item.primer_name }}</td>
-          <td>{{ item.primer_seq }}</td>
-          <td>{{ item.purchase_order }}</td>
-          <td>{{ item.date_received }}</td>
-          <td>{{ item.date_opened }}</td>
-          <td>{{ item.date_discarded }}</td>
-          <td>{{ item.stored_freezer }}</td>
-          <td>{{ item.stored_box }}</td>
-        </tr>      
-      </body>
+      {% for k,v in result_dict.items %}
+          {{ v }}
+          {% for k2,v2 in v.items  %}
+          <tbody>
+            <tr>
+              <td>{{ v2.primer_name }}</td>
+              <td>{{ v2.primer_seq }}</td>
+              <td>{{ v2.purchase_order }}</td>
+              <td>{{ v2.date_received }}</td>
+              <td>{{ v2.date_opened }}</td>
+              <td>{{ v2.date_discarded }}</td>
+              <td>{{ v2.stored_freezer }}</td>
+              <td>{{ v2.stored_box }}</td>
+            </tr>      
+          </body>
+          {% endfor %}
       {% endfor %}
     </table>
     <div class="save-goback-btns">

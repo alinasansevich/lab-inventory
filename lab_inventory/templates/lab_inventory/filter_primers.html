@@ -19,7 +19,7 @@
     </fieldset>
     <fieldset>
       <legend>Enter search terms (choose only one! sdjn;arnb;jdf):</legend>
-      <form action="{% url 'lab_inventory:query_primers' %}" method="post"> <!-- Create e new html for search results??? -->
+      <form action="{% url 'lab_inventory:search_results_primers' %}" method="GET"> <!-- Create e new html for search results??? -->
         {% csrf_token %}
         <div class="form-wrapper">
           {{ form.non_field_errors }}
