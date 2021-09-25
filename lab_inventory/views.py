@@ -243,12 +243,20 @@ def choose_filter_primers(request):
     """The choose filter page for primers."""
     if request.method == "GET":
         radiobtn_form = PrimerRadiobtn(request.GET)
+        # request.session['filter_by'] = request.GET['CHOOSE_FIELD'] # new
+        # return render(request, 'lab_inventory/filter_primers.html') # new 
         
         if radiobtn_form.is_valid():
             # get value from user input and store it in request.session dict
-            request.session['filter_by'] = radiobtn_form.cleaned_data['CHOOSE_FIELD']
+            # request.session['filter_by'] = radiobtn_form.cleaned_data['CHOOSE_FIELD']
+            request.session['filter_by'] = request.GET['CHOOSE_FIELD'] # new
+            print('\n\n')
+            print('request.session:', request.session['filter_by'])
+            print('request.session.keys():', request.session.keys())
+            print('\n\n')
             # go to the next step in the search form
-            return render(request, 'lab_inventory/filter_primers.html')
+            return render(request, 'lab_inventory/filter_primers.html') 
+            
     else:
         radiobtn_form = PrimerRadiobtn()
     
@@ -258,12 +266,16 @@ def choose_filter_primers(request):
 def filter_primers(request):
     """The base filter page for primers."""
     # get filter field from views.choose_filter_primers
-    filter_by = request.session.get('filter_by')
+    # filter_by = request.session.get('filter_by')
+    filter_by = request.GET['CHOOSE_FIELD']
+    
     print('\n\n')
-    print('filter_by:', filter_by)
+    print('filter_primers - filter_by:', filter_by) # "primer_name"
+    request.session['filter_by'] = filter_by
     print('\n\n')
-    print(request.GET)
-    print(request.POST)
+    print("request.GET", request.GET)
+    print("request.GET", request.GET['CHOOSE_FIELD'])
+    print("request.POST", request.POST)
     print('\n\n')
     if request.method == "POST":
         form = FilterPrimerForm(request.POST)# or None)
@@ -288,41 +300,19 @@ def filter_primers(request):
 
 def search_results_primers(request):
     """Display search results for filtered primers."""
-    search_term = request.GET['contains']
-    # print('\n\n')
-    # print("0" + search_term + "123", type(search_term), 'number 2')
-    # print('\n\n')
-    # print(request.GET)
-    # print(request.GET['contains'], type(request.GET['contains']))
-    # print('\n\n')
-    filter_by = request.session.get('filter_by')
-    # print('\n\n')
-    # print('filter_by:', filter_by)
-    # print('\n\n')
+    search_term = request.GET['contains'] # 'Ha'
+    # filter_by = request.GET['CHOOSE_FIELD'] # new, should be 'primer_name'
+    
+    filter_by = request.session.get('filter_by') # 'primer_name'
+    print('\n\n')
+    print('search_results_primers - search_term: ', search_term)
+    print('search_results_primers - filter_by: ', filter_by)
+    print('\n\n')    
+
     if filter_by == 'primer_name':
         query = Primer.objects.filter(primer_name__contains=search_term).values()
         result = {'query': query}
-        # print('\n\n')
-        # print(result['query'])
-        # print('\n\n')
-        # print(type(result['query']))
-        result_dict = {}
-        count = 1
-        for item in result['query']:
-            item_dict = {k:v for (k,v) in item.items()}
-            result_dict[count] = item_dict
-            count += 1
-        # for k,v in result_dict.items():
-        #     print(k, '\t', v)
-        # print('\n\n')
-        print("I'm here!!!")
-        print('\n\n')
-        return render(request, 'lab_inventory/search_results_primers.html', result_dict)
 
-
-
-
-
-
-
-
+        return render(request, 'lab_inventory/search_results_primers.html', {'query': query})
+    else:
+        return redirect('lab_inventory:about') # added this just in case filter_by != 'primer_name'

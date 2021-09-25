@@ -111,7 +111,4 @@ class FilterPrimerForm(forms.Form):
     date_received = forms.DateField(widget=forms.DateInput, required=False, initial='')
     date_opened = forms.DateField(widget=forms.DateInput, required=False, initial='')
     date_discarded = forms.DateField(widget=forms.DateInput, required=False, initial='')
-
-
-
     
