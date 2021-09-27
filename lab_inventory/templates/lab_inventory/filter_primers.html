@@ -6,19 +6,17 @@
 <link rel="stylesheet" type="text/css" href="{% static 'lab_inventory/forms-styles.css' %}">
 
   <div class="container"> 
-    <h2>Search by {{ filter_by }}</h2>
+    <h2>Search by: '{{ filter_by }}'</h2>
 
     <fieldset>
       <h4>Notes:</h4>
       <ul>
         <li>Enter dates in the following format: "2021-01-01"</li>
-        <li>The "Contains..." search field is case sensitive.</li>
-        <li></li>
-        <li></li>
+        <li>The "Contains..." search field is case insensitive.</li>
       </ul>
     </fieldset>
     <fieldset>
-      <legend>Enter search terms (choose only one! sdjn;arnb;jdf):</legend>
+      <legend>Enter search term (use only one at a time):</legend>
       <form action="{% url 'lab_inventory:search_results_primers' %}" method="GET"> <!-- Create e new html for search results??? -->
         {% csrf_token %}
         <div class="form-wrapper">

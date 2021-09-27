@@ -8,14 +8,8 @@
   <div class="container">
     <nav>
       <ul>
-        <li><h2>PCR Primers - Search results for (enter search value here)</h2></li>
-        <li class="push-right dropdown">
-          <a href="javascript:void(0)" class="dropbtn btns">Options</a>
-          <div class="dropdown-content">
-            <a href="{% url 'lab_inventory:filter_primers' %}">Filter</a>
-            <a href="#">Sort</a>
-          </div>
-        </li>        
+        <li><h2>PCR Primers - Search results for: '{{ search_term }}'</h2></li>
+    
       </ul>
     </nav>    
     <table id="search-results-primers-table">
@@ -44,6 +38,7 @@
         {% endfor %}
       </body>
     </table>
+ 
     <div class="save-goback-btns">
       <a class="btns" href="{% url 'lab_inventory:primers' %}">Go back</a>          
     </div>
