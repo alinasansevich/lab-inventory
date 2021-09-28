@@ -34,22 +34,12 @@
               <button class="save-goback-btns" name="submit">Search</button>
           </div>
           <div class="fieldWrapper">
-              {{ form.date_received.errors }}
-              <label for="id_date_received">Date Received:</label>
-              {{ form.date_received }}
+              {{ form.date.errors }}
+              <label for="id_date_received">Date:</label>
+              {{ form.date }}
               <button class="save-goback-btns" name="submit">Search</button>
           </div>
-          <div class="fieldWrapper">
-              {{ form.date_opened.errors }}
-              <label for="id_date_opened">Date Opened:</label>
-              {{ form.date_opened }}
-              <button class="save-goback-btns" name="submit">Search</button>
-          </div>
-          <div class="fieldWrapper">
-              {{ form.date_discarded.errors }}
-              <label for="id_date_discarded">Date Discarded:</label>
-              {{ form.date_discarded }}
-              <button class="save-goback-btns" name="submit">Search</button>
+
           </div>
         </div>
       </form>

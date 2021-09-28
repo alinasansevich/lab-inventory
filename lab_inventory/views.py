@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import DNA, Primer, Supply, Tissue
 from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterPrimerForm, PrimerRadiobtn
 
-
+import datetime
 ### ### ### base views ### ### ###
 
 def index(request):
@@ -274,23 +274,67 @@ def filter_primers(request):
     return render(request, 'lab_inventory/filter_primers.html', context)
 
 
+def date_to_search(search_term):
+    """(str) --> int int int"""    
+    year = int(search_term[:4])
+    month = int(search_term[5:7])
+    day = int(search_term[8:])    
+    return year, month, day
+
+
 def search_results_primers(request):
-    """Display search results for filtered primers."""
-    search_term = request.GET['contains'] # 'Ha'
+    """Display search results for primers."""
     filter_by = request.session.get('filter_by') # 'primer_name'  
+    X = request.GET
+    print('\n\n')
+    print(X)   # DELETE LATER!!!
+    print('\n\n')
 
     if filter_by == 'primer_name':
+        search_term = request.GET['contains']
         query = Primer.objects.filter(primer_name__icontains=search_term).values()
         return render(request, 'lab_inventory/search_results_primers.html', {'query': query,
                                                                              'search_term': search_term,})
     elif filter_by == 'purchase_order':
+        search_term = request.GET['contains']
         query = Primer.objects.filter(purchase_order__icontains=search_term).values()
         return render(request, 'lab_inventory/search_results_primers.html', {'query': query,
                                                                              'search_term': search_term,})
+    elif filter_by == 'date_received':
+        search_term = request.GET['date']
+        search_date = date_to_search(search_term)
+        query = Primer.objects.filter(date_received=datetime.date(search_date[0], search_date[1], search_date[2])).values()
+        return render(request, 'lab_inventory/search_results_primers.html', {'query': query,
+                                                                             'search_term': search_term,})
+    elif filter_by == 'date_opened':
+        search_term = request.GET['date']
+        search_date = date_to_search(search_term)
+        query = Primer.objects.filter(date_opened=datetime.date(search_date[0], search_date[1], search_date[2])).values()
+        return render(request, 'lab_inventory/search_results_primers.html', {'query': query,
+                                                                             'search_term': search_term,})
+    elif filter_by == 'date_discarded':
+        search_term = request.GET['date']
+        search_date = date_to_search(search_term)
+        query = Primer.objects.filter(date_discarded=datetime.date(search_date[0], search_date[1], search_date[2])).values()
+        return render(request, 'lab_inventory/search_results_primers.html', {'query': query,
+                                                                             'search_term': search_term,})
+    
     else:
-        return redirect('lab_inventory:about') # added this just in case filter_by != 'primer_name'
+        return redirect('lab_inventory:about') # @@@@ CHANGE THIS!!!
 
-# def search_results_primers(request): with pagination, it gives MultiValueDictKeyError at /search_results_primers/  'contains'
+# print(X)
+# <QueryDict: {'csrfmiddlewaretoken': ['KyGid1kJC8UPQLYZeT1kZ42Oa8oDCqpyZzgDCzNHyYCGoOmrJJ5FhSx92PGih3Cy'],
+#              'contains': ['Ha'],
+#              'exact_match': [''],
+#              'date_received': [''],
+#              'date_opened': [''],
+#              'date_discarded': [''],
+#              'submit': ['']}>
+
+
+
+### with pagination, it gives MultiValueDictKeyError at /search_results_primers/  'contains'
+# def search_results_primers(request):
 #     """Show all PCR primers."""
 #     search_term = request.GET['contains'] # 'Ha'
 #     filter_by = request.session.get('filter_by') # 'primer_name' 

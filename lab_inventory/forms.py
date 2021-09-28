@@ -108,7 +108,6 @@ class PrimerRadiobtn(forms.Form):
 class FilterPrimerForm(forms.Form):
     contains = forms.CharField(max_length=100, required=False, initial='')
     exact_match = forms.CharField(max_length=100, required=False, initial='')
-    date_received = forms.DateField(widget=forms.DateInput, required=False, initial='')
-    date_opened = forms.DateField(widget=forms.DateInput, required=False, initial='')
-    date_discarded = forms.DateField(widget=forms.DateInput, required=False, initial='')
+    date = forms.DateField(widget=forms.DateInput, required=False, initial='')
+
     
