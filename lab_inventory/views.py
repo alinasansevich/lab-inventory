@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import DNA, Primer, Supply, Tissue
-from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterPrimerForm, PrimerRadiobtn
+from .forms import DNAForm, PrimerForm, SupplyForm, TissueForm, FilterForm, PrimerRadiobtn, Tissue_DNA_Radiobtn, SupplyRadiobtn
 
 import datetime
 ### ### ### base views ### ### ###
@@ -236,13 +236,13 @@ def edit_primer(request, entry_id):
     return render(request, 'lab_inventory/edit_primer.html', context)
 
 
-### ### ### filter views ### ### ###
+### ### ### filter views: primers ### ### ###
 
 
 def choose_filter_primers(request):
     """The choose filter page for primers."""
     if request.method == "GET":
-        radiobtn_form = PrimerRadiobtn(request.GET)       
+        radiobtn_form = Tissue_DNA_Radiobtn(request.GET)       
         if radiobtn_form.is_valid():
             # get value from user input and store it in request.session dict
             request.session['filter_by'] = request.GET['CHOOSE_FIELD'] # new
@@ -259,7 +259,7 @@ def filter_primers(request):
     filter_by = request.GET['CHOOSE_FIELD']
     request.session['filter_by'] = filter_by
     if request.method == "POST":
-        form = FilterPrimerForm(request.POST)# or None)
+        form = FilterForm(request.POST)# or None)
         if form.is_valid():
             # get value from user input and store it in request.session dict
             request.session['contains'] = form.cleaned_data.get("contains")          
@@ -268,7 +268,7 @@ def filter_primers(request):
         else:
             return render(request, 'lab_inventory/choose_filter_primers.html')
     else:
-        form = FilterPrimerForm(request.POST)
+        form = FilterForm(request.POST)
         context = {'form': form,
                    'filter_by': filter_by,}
     return render(request, 'lab_inventory/filter_primers.html', context)

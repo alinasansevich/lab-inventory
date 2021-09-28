@@ -92,6 +92,34 @@ class PrimerForm(forms.ModelForm):
 
 ### ### ### filter queryset forms ### ### ###
 
+# Tissues and DNA
+CHOOSE_FIELD = [
+    ('tissue_info', 'Organism / Tissue'),
+    ('date_received', 'Date Received'),
+    ('date_opened', 'Date Opened'),
+    ('date_discarded', 'Date Discarded'),
+    ]
+
+class Tissue_DNA_Radiobtn(forms.Form):
+    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD,
+                                                            attrs={'onchange': 'submit()'}))
+
+
+# Lab Supplies
+CHOOSE_FIELD = [
+    ('product_name', 'Product Name'),
+    ('purchase_order', 'Purchase Order'),
+    ('date_received', 'Date Received'),
+    ('date_opened', 'Date Opened'),
+    ('date_discarded', 'Date Discarded'),
+    ]
+
+class SupplyRadiobtn(forms.Form):
+    CHOOSE_FIELD = forms.CharField(widget=forms.RadioSelect(choices=CHOOSE_FIELD,
+                                                            attrs={'onchange': 'submit()'}))
+
+
+# Primers
 CHOOSE_FIELD = [
     ('primer_name', 'Primer Name'),
     ('purchase_order', 'Purchase Order'),
@@ -105,7 +133,7 @@ class PrimerRadiobtn(forms.Form):
                                                             attrs={'onchange': 'submit()'}))
 
 
-class FilterPrimerForm(forms.Form):
+class FilterForm(forms.Form):
     contains = forms.CharField(max_length=100, required=False, initial='')
     exact_match = forms.CharField(max_length=100, required=False, initial='')
     date = forms.DateField(widget=forms.DateInput, required=False, initial='')
